@@ -3,7 +3,7 @@
     ViewData["Title"] = "Ludo Game";
 }
 
-<!-- Lagt till detta för att få ett spel plan -->
+<!-- Lagt till detta för att få ett spelplan -->
 <html>
 <head>
     <link href="reset.css" rel="stylesheet" />
@@ -18,19 +18,32 @@
         <div class="dice">
             @if (1 == 1)
             {
-            <div class="diceDot" id="center"></div>
+                <div class="diceDot" id="center"></div>
             }
             else
             {
-            <!--<div class="diceDot" id="center"></div> För att slippa ha 7 prickar på tärningen-->
-            <div class="diceDot" id="leftUpper"></div>
-            <div class="diceDot" id="leftMiddel"></div>
-            <div class="diceDot" id="leftLower"></div>
-            <div class="diceDot" id="rightUpper"></div>
-            <div class="diceDot" id="rightMiddel"></div>
-            <div class="diceDot" id="rightLower"></div>
+                <!--<div class="diceDot" id="center"></div> För att slippa ha 7 prickar på tärningen-->
+                <div class="diceDot" id="leftUpper"></div>
+                <div class="diceDot" id="leftMiddel"></div>
+                <div class="diceDot" id="leftLower"></div>
+                <div class="diceDot" id="rightUpper"></div>
+                <div class="diceDot" id="rightMiddel"></div>
+                <div class="diceDot" id="rightLower"></div>
+
             }
+
         </div>
+            
+           <div><button type="button">Throw The Dice</button> </div>
+                 <div class="btn" id="center"></div>
+                
+
+
+
+
+
+
+
     </div>
     <div class="board">
         <div class="wing" id="leftWing">
@@ -173,6 +186,7 @@
                 <div class="brick player4"></div>
             </div>
         </div>
+
     </div>
 
 

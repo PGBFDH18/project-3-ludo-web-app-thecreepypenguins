@@ -32,7 +32,7 @@ html {
 button.accept-policy {
   font-size: 1rem;
   line-height: inherit;
-}*/
+}*/ 
 
 
 /* Sticky footer styles
@@ -44,8 +44,7 @@ html {
 
 body {
   /* Margin bottom by footer height */
-  margin-bottom: 60px;
-}
+  margin-bottom: 60px;}
 .footer {
   position: absolute;
   bottom: 0;
@@ -244,4 +243,12 @@ html {
 .start.player4 {
     left: 540px;
     top: 0px;
+}
+.btn {
+    border: none;
+    background-color: inherit;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    display: inline-block;
 }
