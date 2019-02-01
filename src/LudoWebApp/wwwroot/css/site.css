@@ -70,9 +70,7 @@ html {
     width: 56px;
     height: 56px;
     background-color: antiquewhite;
-    border: 2px solid black;
-    margin: 0px;
-    padding: 0px;
+    border: 2px solid black;9
     position: absolute;
     top: 150px;
     left: 50px;
@@ -151,8 +149,7 @@ html {
 }
 
 .board {
-    top: 0px;
-    left: 0px;
+
     width: 860px;
     height: 860px;
     padding: 20px;
@@ -244,11 +241,50 @@ html {
     left: 540px;
     top: 0px;
 }
-throwDice button {
-    background-color: #4CAF50; /* Green background */
-    border: 1px solid green; /* Green border */
-    color: white; /* White text */
-    padding: 10px 24px; /* Some padding */
-    cursor: pointer; /* Pointer/hand icon */
-    float: left; /* Float the buttons side by side */
+Text
+
+Dice
+
+classname: myButton
+
+Font Size:
+28px
+bold italic
+Size
+Vertical Size:
+15px
+Horizontal Size:
+37px
+Border
+Border Radius:
+42px
+Border Size:
+0px
+Box Shadow / inset
+Vertical Position:
+0px
+Horizontal Position:
+0px
+Blur Radius:
+0px
+Spread Radius:
+2px
+Text Shadow
+body,
+input,
+button
+{
+        font: 14px "Trebuchet MS", sans-serif; 
+
 }
+.myButton {
+    padding: 8px 16px;
+    display: inline-block;
+    border-radius: 9px;
+    background-color: black;
+    font-size: 150%;
+    color:green;
+    text-decoration:none;
+}
+
+        
