@@ -20,6 +20,11 @@ namespace LudoWebApp.Controllers
             return View();
         }
 
+        public void Kewk()
+        {
+            var kewk = "kewk";
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

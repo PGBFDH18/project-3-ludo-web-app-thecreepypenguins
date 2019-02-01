@@ -9,51 +9,7 @@
     <link href="LudoStyle.css" rel="stylesheet" />
 </head>
 <body>
-    <div></div>
-    <l class="gameInfo">
-       
-        @*nedan är en bild, hade den för att testa mig fram bara*@
-        @*<img src="~/images/1528080671pikachu-not-happy-pokemon-png.png" width="104" height="142">*@
-        <div class="currentPlayer">Current player </div>
-        <div class="dice">
-            @if (1 == 1)
-            {
-                <div class="diceDot" id="center"></div>
-            }
-            else
-            {
-                <!--<div class="diceDot" id="center"></div> För att slippa ha 7 prickar på tärningen-->
-                <div class="diceDot" id="leftUpper"></div>
-                <div class="diceDot" id="leftMiddel"></div>
-                <div class="diceDot" id="leftLower"></div>
-                <div class="diceDot" id="rightUpper"></div>
-                <div class="diceDot" id="rightMiddel"></div>
-                <div class="diceDot" id="rightLower"></div>
-
-            }
-
-        </div>
-        <button type="button">Click Me!</button>
-        }
-
-        <div>
-
-            <a href="https://thriveglobal.com/stories/smart-sensitive-and-overwhelmed/">
-                <button style="color:forestgreen;
-            Background:black;
-            font-size: 20px;
-            width: 100%;
-            height: 100px;
-            border-radius:20px;
-            height:50px;width:90px;">
-                    Dice
-                </button>
-            </a>
-
-
-
-
-        </div>
+    <div id="gameWrapper">
         <div class="board">
             <div class="wing" id="leftWing">
                 <div class="field"></div>
@@ -195,9 +151,32 @@
                     <div class="brick player4"></div>
                 </div>
             </div>
-
         </div>
+        <div class="gameInfo">
 
+            @*nedan är en bild, hade den för att testa mig fram bara*
+            @*<img src="~/images/1528080671pikachu-not-happy-pokemon-png.png" width="104" height="142">*@
+            <div class="currentPlayer">Current player </div>
+            <div class="dice">
+                @if (1 == 1)
+                {
+                    <div class="diceDot" id="center"></div>
+                }
+                else
+                {
 
+                }
+
+                <!--<div class="diceDot" id="center"></div> För att slippa ha 7 prickar på tärningen-->
+                <div class="diceDot" id="leftUpper"></div>
+                <div class="diceDot" id="leftMiddel"></div>
+                <div class="diceDot" id="leftLower"></div>
+                <div class="diceDot" id="rightUpper"></div>
+                <div class="diceDot" id="rightMiddel"></div>
+                <div class="diceDot" id="rightLower"></div>
+            </div>
+            <button onclick="" class="button"> Dice</button>
+        </div>
+    </div>
 </body>
 </html>
