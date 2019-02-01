@@ -32,7 +32,7 @@ html {
 button.accept-policy {
   font-size: 1rem;
   line-height: inherit;
-}*/
+}*/ 
 
 
 /* Sticky footer styles
@@ -44,8 +44,7 @@ html {
 
 body {
   /* Margin bottom by footer height */
-  margin-bottom: 60px;
-}
+  margin-bottom: 60px;}
 .footer {
   position: absolute;
   bottom: 0;
@@ -244,4 +243,12 @@ html {
 .start.player4 {
     left: 540px;
     top: 0px;
+}
+throwDice button {
+    background-color: #4CAF50; /* Green background */
+    border: 1px solid green; /* Green border */
+    color: white; /* White text */
+    padding: 10px 24px; /* Some padding */
+    cursor: pointer; /* Pointer/hand icon */
+    float: left; /* Float the buttons side by side */
 }
