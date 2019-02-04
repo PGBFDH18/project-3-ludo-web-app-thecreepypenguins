@@ -34,7 +34,17 @@ namespace LudoWebApp.Controllers
 
             IRestResponse<SpecificGame> ludoGameResponse = client.Execute<SpecificGame>(request);
             return ludoGameResponse.Data;
+        }
+        public IEnumerable<int> GetGamesFromAPI()
+        {
+            var client = new RestClient("http://someserver.com/api LOCALHOST PÅ VÅRT API NÄR VI STARTAT UPP DET!!!");
+            var request = new RestRequest("ludo/", Method.GET);
 
+            IRestResponse<ExsistingGames> ludoGameResponse = client.Execute<ExsistingGames>(request);
+
+            return ludoGameResponse.Data;
+
+            
         }
     }
 }
