@@ -11,5 +11,11 @@ namespace LudoWebApp.LudoModels
         //public PieceGameState State { get; set; }
         public int Position { get; set; }
 
+        public int PlayerId { get; set; }
+        public string Name { get; set; }
+        public string PlayerColor { get; set; }
+        public Piece[] Pieces { get; set; }
+        public int Offset { get; set; }
+
     }
 }
