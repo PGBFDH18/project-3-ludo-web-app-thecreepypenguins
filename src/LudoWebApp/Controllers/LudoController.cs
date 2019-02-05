@@ -35,18 +35,32 @@ namespace LudoWebApp.Controllers
 
             IRestResponse<SpecificGame> ludoGameResponse = client.Execute<SpecificGame>(request);
             return ludoGameResponse.Data;
-
         }
+
         public ExsistingGames GetGamesFromAPI()
         {
             var client = new RestClient("http://someserver.com/api LOCALHOST PÅ VÅRT API NÄR VI STARTAT UPP DET!!!");
             var request = new RestRequest("ludo/", Method.GET);
 
             IRestResponse<ExsistingGames> ludoGameResponse = client.Execute<ExsistingGames>(request);
-               
 
             return ludoGameResponse.Data;
-                       
+        }
+
+        // ludo/{gameId}
+        // Detaljerat information om spelet, som vart alla pjäser finns. returnerar spelaranra och pjäserna som objekt
+        public Player GetPiecePosition()
+        {
+            var client = new RestClient("http://someserver.com/api LOCALHOST PÅ VÅRT API NÄR VI STARTAT UPP DET!!!");
+            var request = new RestRequest("ludo/{gameID}", Method.GET); 
+
+            IRestResponse<Player> piecesAndPlayer = client.Execute<Player>(request);
+
+            return piecesAndPlayer.Data;
         }
     }
+
+
+
+
 }

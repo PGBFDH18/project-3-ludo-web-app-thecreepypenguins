@@ -9,4 +9,5 @@ namespace LudoWebApp.LudoModels
     {
         public Player currentPlayer { get; set; }
     }
+
 }
