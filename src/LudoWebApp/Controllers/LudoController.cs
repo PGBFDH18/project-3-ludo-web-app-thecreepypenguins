@@ -22,25 +22,41 @@ namespace LudoWebApp.Controllers
                     Name = "test"
                 }
             };*/
-            SpecificGame result = GetSpeficifGameFromAPi();
+            var x = GetGamesFromAPI();
+
+            SpecificGame result = GetSpeficifGameFromAPi(123);
+
             return View(result);
         }
 
-        public SpecificGame GetSpeficifGameFromAPi()
+        public IActionResult RollDice(int gameId)
         {
-            var client = new RestClient("http://someserver.com/api LOCALHOST PÅ VÅRT API NÄR VI STARTAT UPP DET!!!");
+            SpecificGame result = GetSpeficifGameFromAPi(gameId);
+
+            // Testa att kasta en tärning, tärningen skall egentligen komma från REST API projektet
+            var r = new Random();
+            result.dice = r.Next(6) + 1;
+
+            //"Index" för att få samma utseende som index metoden
+            return View("Index", result);
+        }
+
+        public SpecificGame GetSpeficifGameFromAPi(int gameId)
+        {
+            var client = new RestClient("http://localhost:52858/api"); //LOCALHOST PÅ VÅRT API NÄR VI STARTAT UPP DET!!!
             var request = new RestRequest("ludo/{id}", Method.GET);
-            request.AddUrlSegment("id", "123"); // replaces matching token in request.Resource
+            request.AddUrlSegment("id", gameId); // replaces matching token in request.Resource
 
             IRestResponse<SpecificGame> ludoGameResponse = client.Execute<SpecificGame>(request);
             return ludoGameResponse.Data;
         }
+
         public IEnumerable<int> GetGamesFromAPI()
         {
-            var client = new RestClient("http://someserver.com/api LOCALHOST PÅ VÅRT API NÄR VI STARTAT UPP DET!!!");
+            var client = new RestClient("http://localhost:52858/api"); // LOCALHOST PÅ VÅRT API NÄR VI STARTAT UPP DET!!!
             var request = new RestRequest("ludo/", Method.GET);
 
-            IRestResponse<ExsistingGames> ludoGameResponse = client.Execute<ExsistingGames>(request);
+            var ludoGameResponse = client.Execute<List<int>>(request);
 
             return ludoGameResponse.Data;
 

@@ -7,6 +7,8 @@ namespace LudoWebApp.LudoModels
 {
     public class SpecificGame
     {
+        public int gameId { get; set; }
+        public int dice { get; set; }
         public Player currentPlayer { get; set; }
     }
 }
