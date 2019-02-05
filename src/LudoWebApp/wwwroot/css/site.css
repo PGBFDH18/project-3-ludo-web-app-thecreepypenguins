@@ -1,5 +1,4 @@
-﻿
-html {
+﻿html {
     background-color: lightgray;
 }
 
@@ -7,8 +6,8 @@ html {
     font-size: 300%;
 }
 
-#gameWrapper{
-    display:inline-block;
+#gameWrapper {
+    display: inline-block;
     background: pink;
 }
 
@@ -30,6 +29,7 @@ html {
     width: 90px;
     font-size: 20px;
 }
+
 .diceDot {
     width: 10px;
     height: 10px;
@@ -80,14 +80,13 @@ html {
     margin-left: 950px;
     top: 20px;
     position: absolute;
-
 }
 
 .goal {
     width: 180px;
     height: 180px;
     position: absolute;
-    left:auto;
+    left: auto;
     top: auto;
     background-color: cyan;
 }
@@ -103,7 +102,7 @@ html {
 }
 
 .board {
-    float:left;
+    float: left;
     width: 900px;
     height: 900px;
     background-color: antiquewhite;
@@ -189,4 +188,3 @@ html {
 .start.player4 {
     left: 540px;
 }
-        

@@ -9,7 +9,7 @@ namespace LudoWebApp.LudoModels
     {
         public List<Player> _players = new List<Player>();
        // private GameState _gameState = GameState.NotStarted;
-        private int currentPlayerId = 0;
+        private int currentPlayerId;
        // private IDiece _diece = null;
 
 

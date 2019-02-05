@@ -11,4 +11,5 @@ namespace LudoWebApp.LudoModels
         public int dice { get; set; }
         public Player currentPlayer { get; set; }
     }
+
 }
