@@ -37,7 +37,7 @@ namespace LudoWebApp.Controllers
             return ludoGameResponse.Data;
         }
         
-        public Player GetPiecePosition()
+        public Player GetPiecesPosition()
         {
             var client = new RestClient("http://someserver.com/api LOCALHOST PÅ VÅRT API NÄR VI STARTAT UPP DET!!!");
             var request = new RestRequest("ludo/{gameID}", Method.GET); 
