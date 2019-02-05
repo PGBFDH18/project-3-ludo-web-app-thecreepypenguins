@@ -24,14 +24,14 @@ namespace LudoWebApp.Controllers
             };*/
             var x = GetGamesFromAPI();
 
-            SpecificGame result = GetSpeficifGameFromAPi(123);
+            SpecificGamePlayers result = GetSpeficifGameFromAPi(123);
 
             return View(result);
         }
 
         public IActionResult RollDice(int gameId)
         {
-            SpecificGame result = GetSpeficifGameFromAPi(gameId);
+            SpecificGamePlayers result = GetSpeficifGameFromAPi(gameId);
 
             // Testa att kasta en tärning, tärningen skall egentligen komma från REST API projektet
             var r = new Random();
@@ -41,22 +41,22 @@ namespace LudoWebApp.Controllers
             return View("Index", result);
         }
 
-        public SpecificGame GetSpeficifGameFromAPi(int gameId)
+        public SpecificGamePlayers GetSpeficifGameFromAPi(int gameId)
         {
             var client = new RestClient("http://localhost:52858/api"); //LOCALHOST PÅ VÅRT API NÄR VI STARTAT UPP DET!!!
             var request = new RestRequest("ludo/{id}", Method.GET);
             request.AddUrlSegment("id", gameId); // replaces matching token in request.Resource
 
-            IRestResponse<SpecificGame> ludoGameResponse = client.Execute<SpecificGame>(request);
+            IRestResponse<SpecificGamePlayers> ludoGameResponse = client.Execute<SpecificGamePlayers>(request);
             return ludoGameResponse.Data;
         }
 
-        public ExsistingGames GetGamesFromAPI()
+        public IEnumerable<int> GetGamesFromAPI()
         {
             var client = new RestClient("http://localhost:52858/api"); // LOCALHOST PÅ VÅRT API NÄR VI STARTAT UPP DET!!!
             var request = new RestRequest("ludo/", Method.GET);
 
-            IRestResponse<ExsistingGames> ludoGameResponse = client.Execute<ExsistingGames>(request);
+            IRestResponse<List<int>> ludoGameResponse = client.Execute<List<int>>(request);
 
             return ludoGameResponse.Data;
         }
