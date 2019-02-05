@@ -11,6 +11,7 @@ namespace LudoWebApp.LudoModels
         //public PieceGameState State { get; set; }
         public int Position { get; set; }
 
+        //ful lösning men testar 
         public int PlayerId { get; set; }
         public string Name { get; set; }
         public string PlayerColor { get; set; }
