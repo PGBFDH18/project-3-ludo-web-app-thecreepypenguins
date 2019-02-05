@@ -22,6 +22,7 @@ namespace LudoWebApp.Controllers
                     Name = "test"
                 }
             };*/
+
             SpecificGame result = GetSpeficifGameFromAPi();
             return View(result);
         }
@@ -30,11 +31,10 @@ namespace LudoWebApp.Controllers
         {
             var client = new RestClient("http://someserver.com/api LOCALHOST PÅ VÅRT API NÄR VI STARTAT UPP DET!!!");
             var request = new RestRequest("ludo/{id}", Method.GET);
-            request.AddUrlSegment("id", "123"); // replaces matching token in request.Resource
+            //request.AddUrlSegment("id", "123"); // replaces matching token in request.Resource
 
             IRestResponse<SpecificGame> ludoGameResponse = client.Execute<SpecificGame>(request);
             return ludoGameResponse.Data;
-
         }
     }
 }
