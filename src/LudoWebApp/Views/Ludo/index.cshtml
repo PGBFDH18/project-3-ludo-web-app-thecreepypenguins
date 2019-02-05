@@ -1,15 +1,11 @@
 ﻿@model LudoWebApp.LudoModels.SpecificGame
 @{
     ViewData["Title"] = "Ludo Game";
+    Layout = "_LudoLayout";
 }
 
 <!-- Lagt till detta för att få ett spelplan -->
-<html>
-<head>
-    <link href="reset.css" rel="stylesheet" />
-    <link href="LudoStyle.css" rel="stylesheet" />
-</head>
-<body>
+
     <div id="gameWrapper">
         <div class="board">
             <div class="wing" id="leftWing">
@@ -212,5 +208,3 @@
             <button onclick="" class="button">Dice</button>
         </div>
     </div>
-</body>
-</html>

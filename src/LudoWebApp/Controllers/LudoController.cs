@@ -60,18 +60,38 @@ namespace LudoWebApp.Controllers
 
             return ludoGameResponse.Data;
         }
-
-        // ludo/{gameId}
-        // Detaljerat information om spelet, som vart alla pjäser finns. returnerar spelaranra och pjäserna som objekt
-        public Player GetPiecePosition()
+        
+        public Player GetPiecesPosition()
         {
-            var client = new RestClient("http://someserver.com/api LOCALHOST PÅ VÅRT API NÄR VI STARTAT UPP DET!!!");
-            var request = new RestRequest("ludo/{gameID}", Method.GET); 
+            var client = new RestClient("http://someserver.com/api");
+            var request = new RestRequest("ludo/{gameID}", Method.GET);
 
             IRestResponse<Player> piecesAndPlayer = client.Execute<Player>(request);
 
             return piecesAndPlayer.Data;
+            //kommer det att ta med piece och player?? eftersom player inte har pieces la in pieces i player
         }
+
+        public SpecificGamePlayers GetSpecificGamePlayers()
+        {
+            var client = new RestClient("http://localhost:52858/");
+            var request = new RestRequest("ludo/{id}/players", Method.GET);
+            //request.AddUrlSegment("id", "123"); // replaces matching token in request.Resource
+
+            IRestResponse<SpecificGamePlayers> ludoGameResponse = client.Execute<SpecificGamePlayers>(request);
+            return ludoGameResponse.Data;
+        }
+
+        public Player GetSpecificPlayer()
+        {
+            var client = new RestClient("http://someserver.com/api");
+            var request = new RestRequest("ludo/{id}/players/{playerId}", Method.GET);
+            //request.AddUrlSegment("id", "123"); // replaces matching token in request.Resource
+
+            IRestResponse<Player> playerResponse = client.Execute<Player>(request);
+            return playerResponse.Data;
+        }
+
     }
 
 

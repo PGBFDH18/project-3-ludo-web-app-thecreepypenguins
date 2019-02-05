@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace LudoWebApp.LudoModels
 {
-    public class SpecificGame
+    public class SpecificGamePlayers
     {
         public int gameId { get; set; }
         public int dice { get; set; }
