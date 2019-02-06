@@ -29,21 +29,21 @@ namespace LudoWebApp.Controllers
             return View(result);
         }
 
-        public IActionResult RollDice(int gameId)
-        {
-            SpecificGamePlayers result = GetSpeficifGameFromAPi(gameId);
+        //public IActionResult RollDice(int gameId)
+        //{
+        //    SpecificGamePlayers result = GetSpeficifGameFromAPi(gameId);
 
-            // Testa att kasta en tärning, tärningen skall egentligen komma från REST API projektet
-            var r = new Random();
-            result.dice = r.Next(6) + 1;
+        //    // Testa att kasta en tärning, tärningen skall egentligen komma från REST API projektet
+        //    var r = new Random();
+        //    result.dice = r.Next(6) + 1;
 
-            //"Index" för att få samma utseende som index metoden
-            return View("Index", result);
-        }
+        //    //"Index" för att få samma utseende som index metoden
+        //    return View("Index", result);
+        //}
 
         public SpecificGamePlayers GetSpeficifGameFromAPi(int gameId)
         {
-            var client = new RestClient("http://localhost:52858/api"); //LOCALHOST PÅ VÅRT API NÄR VI STARTAT UPP DET!!!
+            var client = new RestClient("http://someserver.com/api"); //LOCALHOST PÅ VÅRT API NÄR VI STARTAT UPP DET!!!
             var request = new RestRequest("ludo/{id}", Method.GET);
             request.AddUrlSegment("id", gameId); // replaces matching token in request.Resource
 
@@ -53,7 +53,7 @@ namespace LudoWebApp.Controllers
 
         public IEnumerable<int> GetGamesFromAPI()
         {
-            var client = new RestClient("http://localhost:52858/api"); // LOCALHOST PÅ VÅRT API NÄR VI STARTAT UPP DET!!!
+            var client = new RestClient("http://someserver.com/api"); // LOCALHOST PÅ VÅRT API NÄR VI STARTAT UPP DET!!!
             var request = new RestRequest("ludo/", Method.GET);
 
             IRestResponse<List<int>> ludoGameResponse = client.Execute<List<int>>(request);
@@ -69,7 +69,6 @@ namespace LudoWebApp.Controllers
             IRestResponse<Player> piecesAndPlayer = client.Execute<Player>(request);
 
             return piecesAndPlayer.Data;
-            //kommer det att ta med piece och player?? eftersom player inte har pieces la in pieces i player
         }
 
         public SpecificGamePlayers GetSpecificGamePlayers()
@@ -93,6 +92,7 @@ namespace LudoWebApp.Controllers
         }
 
         // KOLLA HUR MAN GÖR POST DELETE PUT REQUESTS MOT API:ET
+
     }
 
 
