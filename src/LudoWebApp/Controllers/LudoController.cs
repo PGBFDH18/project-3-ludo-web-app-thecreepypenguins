@@ -68,6 +68,7 @@ namespace LudoWebApp.Controllers
             return playerResponse.Data;
         }
 
+        // KOLLA HUR MAN GÖR POST DELETE PUT REQUESTS MOT API:ET
     }
 
 
