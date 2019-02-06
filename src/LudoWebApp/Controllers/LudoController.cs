@@ -24,7 +24,7 @@ namespace LudoWebApp.Controllers
             };*/
             var x = GetGamesFromAPI();
 
-            SpecificGamePlayers result = GetSpeficifGameFromAPi(123);
+            SpecificGamePlayers result = GetSpeficifGameFromAPi();
 
             return View(result);
         }
@@ -41,11 +41,11 @@ namespace LudoWebApp.Controllers
         //    return View("Index", result);
         //}
 
-        public SpecificGamePlayers GetSpeficifGameFromAPi(int gameId)
+        public SpecificGamePlayers GetSpeficifGameFromAPi()
         {
-            var client = new RestClient("http://someserver.com/api"); //LOCALHOST PÅ VÅRT API NÄR VI STARTAT UPP DET!!!
+            var client = new RestClient("http://localhost:52858/api"); //LOCALHOST PÅ VÅRT API NÄR VI STARTAT UPP DET!!!
             var request = new RestRequest("ludo/{id}", Method.GET);
-            request.AddUrlSegment("id", gameId); // replaces matching token in request.Resource
+           // request.AddUrlSegment("id", gameId); // replaces matching token in request.Resource
 
             IRestResponse<SpecificGamePlayers> ludoGameResponse = client.Execute<SpecificGamePlayers>(request);
             return ludoGameResponse.Data;
@@ -91,8 +91,14 @@ namespace LudoWebApp.Controllers
             return playerResponse.Data;
         }
 
-        // KOLLA HUR MAN GÖR POST DELETE PUT REQUESTS MOT API:ET
+        public void CreateNewGame()
+        {
+            var client = new RestClient("http://someserver.com/api");
 
+            var request = new RestRequest("ludo/", Method.POST);
+            request.AddParameter("name", "value");
+
+        }
     }
 
 
