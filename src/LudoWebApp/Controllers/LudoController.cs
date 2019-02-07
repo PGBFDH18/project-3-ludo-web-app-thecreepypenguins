@@ -37,7 +37,7 @@ namespace LudoWebApp.Controllers
             //få alla spel som ett objekt och inte int
             IEnumerable<int> allGameIds = GetGamesFromAPI();
 
-            //Lista av alla spel 
+            //skapa en tom lista för alla spel 
             viewModel.AllGames = new List<Game>();
 
             //hämtar alla spel ifrån API
