@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -24,7 +25,7 @@ namespace LudoWebApp.Controllers
             };*/
             var x = GetGamesFromAPI();
 
-            SpecificGamePlayers result = GetSpeficifGameFromAPi(123);
+            SpecificGamePlayers result = GetSpeficifGam eFromAPi(123);
 
             return View(result);
         }
@@ -60,7 +61,7 @@ namespace LudoWebApp.Controllers
 
             return ludoGameResponse.Data;
         }
-        
+
         public Player GetPiecesPosition()
         {
             var client = new RestClient("http://someserver.com/api");
