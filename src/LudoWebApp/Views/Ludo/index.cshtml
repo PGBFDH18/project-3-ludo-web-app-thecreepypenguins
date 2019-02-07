@@ -156,7 +156,7 @@
         <div class="infoGame">
             @foreach (var game in Model.AllGames)
             {
-                @:GameId @game.GameId, number of players: @game.Players.Count() <br />
+                @:GameId @game.GameId, number of players: @game.Players.Count() , State: @game.GameState <br />
             }
         </div>
         <div class="currentPlayer">Current player </div>
