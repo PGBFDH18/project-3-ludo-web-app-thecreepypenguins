@@ -11,5 +11,7 @@ namespace LudoWebApp.LudoModels
        // private GameState _gameState = GameState.NotStarted;
         private int currentPlayerId;
        // private IDiece _diece = null;
+
+
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using LudoWebApp.LudoModels;
+using LudoWebApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using RestSharp;
 
@@ -22,11 +23,33 @@ namespace LudoWebApp.Controllers
                     Name = "test"
                 }
             };*/
-            var x = GetGamesFromAPI();
 
-            SpecificGamePlayers result = GetSpeficifGameFromAPi();
+            //TEsta get metoderna med hjälp av postman, man måste först skapa spelet med hjälå av postman. och lägga till spelare
 
-            return View(result);
+            //var allGames = GetGamesFromAPI(); // ta fram alla spel
+            //var player = GetSpecificPlayer(0, 0); // ta fram en spelare ifrån ett spel
+            //var playersInGame = GetSpecificGamePlayers(0); // ta fram alla spelare i ett spel
+            //var game = GetSpeficifGameFromAPi(0); //hämta ett spel och få alla detaljer om det
+
+            //skapar en viewModel
+            var viewModel = new LudoViewModel();
+
+            //få alla spel som ett objekt och inte int
+            IEnumerable<int> allGameIds = GetGamesFromAPI();
+
+            //Lista av alla spel 
+            viewModel.AllGames = new List<Game>();
+
+            //hämtar alla spel ifrån API
+            foreach (var gameId in allGameIds)
+            {
+                viewModel.AllGames.Add(GetSpeficifGameFromAPi(gameId));
+            }
+
+            viewModel.Dice = 4;
+
+            //en klass som skicka in i view 
+            return View(viewModel);
         }
 
         //public IActionResult RollDice(int gameId)
@@ -41,26 +64,35 @@ namespace LudoWebApp.Controllers
         //    return View("Index", result);
         //}
 
-        public SpecificGamePlayers GetSpeficifGameFromAPi()
+        public Game GetSpeficifGameFromAPi(int gameId)
         {
             var client = new RestClient("http://localhost:52858/api"); //LOCALHOST PÅ VÅRT API NÄR VI STARTAT UPP DET!!!
-            var request = new RestRequest("ludo/{id}", Method.GET);
-           // request.AddUrlSegment("id", gameId); // replaces matching token in request.Resource
+            var request = new RestRequest("ludo/{gameId}", Method.GET);
+            request.AddUrlSegment("gameId", gameId); // replaces matching token in request.Resource
 
-            IRestResponse<SpecificGamePlayers> ludoGameResponse = client.Execute<SpecificGamePlayers>(request);
+            IRestResponse<Game> ludoGameResponse = client.Execute<Game>(request);
+
+            // Om det blir fel svar från API:et så kasta ett fel istället för att gå vidare
+            if (ludoGameResponse.ErrorException != null)
+                throw ludoGameResponse.ErrorException;
+
             return ludoGameResponse.Data;
         }
 
         public IEnumerable<int> GetGamesFromAPI()
         {
-            var client = new RestClient("http://someserver.com/api"); // LOCALHOST PÅ VÅRT API NÄR VI STARTAT UPP DET!!!
+            var client = new RestClient("http://localhost:52858/api"); // LOCALHOST PÅ VÅRT API NÄR VI STARTAT UPP DET!!!
             var request = new RestRequest("ludo/", Method.GET);
 
             IRestResponse<List<int>> ludoGameResponse = client.Execute<List<int>>(request);
 
+            // Om det blir fel svar från API:et så kasta ett fel istället för att gå vidare
+            if (ludoGameResponse.ErrorException != null)
+                throw ludoGameResponse.ErrorException;
+
             return ludoGameResponse.Data;
         }
-        
+
         public Player GetPiecesPosition()
         {
             var client = new RestClient("http://someserver.com/api");
@@ -68,26 +100,41 @@ namespace LudoWebApp.Controllers
 
             IRestResponse<Player> piecesAndPlayer = client.Execute<Player>(request);
 
+            // Om det blir fel svar från API:et så kasta ett fel istället för att gå vidare
+            if (piecesAndPlayer.ErrorException != null)
+                throw piecesAndPlayer.ErrorException;
+
             return piecesAndPlayer.Data;
         }
 
-        public SpecificGamePlayers GetSpecificGamePlayers()
+        public List<Player> GetSpecificGamePlayers(int gameId)
         {
-            var client = new RestClient("http://localhost:52858/");
-            var request = new RestRequest("ludo/{id}/players", Method.GET);
-            //request.AddUrlSegment("id", "123"); // replaces matching token in request.Resource
+            var client = new RestClient("http://localhost:52858/api");
+            var request = new RestRequest("ludo/{gameId}/players", Method.GET);
+            request.AddUrlSegment("gameId", gameId); // replaces matching token in request.Resource
 
-            IRestResponse<SpecificGamePlayers> ludoGameResponse = client.Execute<SpecificGamePlayers>(request);
+            IRestResponse<List<Player>> ludoGameResponse = client.Execute<List<Player>>(request);
+
+            // Om det blir fel svar från API:et så kasta ett fel istället för att gå vidare
+            if (ludoGameResponse.ErrorException != null)
+                throw ludoGameResponse.ErrorException;
+
             return ludoGameResponse.Data;
         }
 
-        public Player GetSpecificPlayer()
+        public Player GetSpecificPlayer(int gameId, int playerId)
         {
-            var client = new RestClient("http://someserver.com/api");
-            var request = new RestRequest("ludo/{id}/players/{playerId}", Method.GET);
-            //request.AddUrlSegment("id", "123"); // replaces matching token in request.Resource
+            var client = new RestClient("http://localhost:52858/api");
+            var request = new RestRequest("ludo/{gameId}/players/{playerId}", Method.GET);
+            request.AddUrlSegment("gameId", gameId); // replaces matching token in request.Resource
+            request.AddUrlSegment("playerId", playerId); // replaces matching token in request.Resource
 
             IRestResponse<Player> playerResponse = client.Execute<Player>(request);
+
+            // Om det blir fel svar från API:et så kasta ett fel istället för att gå vidare
+            if (playerResponse.ErrorException != null)
+                throw playerResponse.ErrorException;
+
             return playerResponse.Data;
         }
 
