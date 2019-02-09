@@ -26,7 +26,7 @@ namespace LudoWebApp.Controllers
 
             //TEsta get metoderna med hjälp av postman, man måste först skapa spelet med hjälå av postman. och lägga till spelare
 
-            //var allGames = GetGamesFromAPI(); // ta fram alla spel
+            var allGames = GetGamesFromAPI(); // ta fram alla spel
             //var player = GetSpecificPlayer(0, 0); // ta fram en spelare ifrån ett spel
             //var playersInGame = GetSpecificGamePlayers(0); // ta fram alla spelare i ett spel
             //var game = GetSpeficifGameFromAPi(0); //hämta ett spel och få alla detaljer om det
