@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using LudoWebApp.LudoModels;
 using LudoWebApp.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using RestSharp;
 
 
@@ -13,8 +14,16 @@ namespace LudoWebApp.Controllers
 {
     public class LudoController : Controller
     {
+        private readonly ILogger logger;
+
+        public LudoController(ILogger logger)
+        {
+            this.logger = logger;
+        }
         public IActionResult Index()
         {
+            logger.LogInformation("gete all games");
+
             /* test för utskrift
             SpecificGame result = new SpecificGame()
             {
