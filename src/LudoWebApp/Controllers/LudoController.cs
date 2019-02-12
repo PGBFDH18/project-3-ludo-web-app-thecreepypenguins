@@ -14,15 +14,18 @@ namespace LudoWebApp.Controllers
 {
     public class LudoController : Controller
     {
+        //så att man kan använda logger i index metoden eller andra action i denna klassen
         private readonly ILogger logger;
 
+        //konstruktor, loggar sätts vid hjälp av dependency injection
         public LudoController(ILogger logger)
         {
             this.logger = logger;
         }
+
         public IActionResult Index()
         {
-            logger.LogInformation("gete all games");
+            logger.LogInformation("get all games");
 
             /* test för utskrift
             SpecificGame result = new SpecificGame()
