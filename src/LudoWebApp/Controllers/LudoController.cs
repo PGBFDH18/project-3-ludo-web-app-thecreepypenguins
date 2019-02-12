@@ -66,11 +66,6 @@ namespace LudoWebApp.Controllers
 
         public Game GetSpeficifGameFromAPi(int gameId)
         {
-<<<<<<< HEAD
-            var client = new RestClient("http://localhost:52858/api/"); //LOCALHOST PÅ VÅRT API NÄR VI STARTAT UPP DET!!!
-            var request = new RestRequest("ludo/{id}", Method.GET);
-           // request.AddUrlSegment("id", gameId); // replaces matching token in request.Resource
-=======
             var client = new RestClient("http://localhost:52858/api"); //LOCALHOST PÅ VÅRT API NÄR VI STARTAT UPP DET!!!
             var request = new RestRequest("ludo/{gameId}", Method.GET);
             request.AddUrlSegment("gameId", gameId); // replaces matching token in request.Resource
@@ -80,7 +75,6 @@ namespace LudoWebApp.Controllers
             // Om det blir fel svar från API:et så kasta ett fel istället för att gå vidare
             if (ludoGameResponse.ErrorException != null)
                 throw ludoGameResponse.ErrorException;
->>>>>>> 8caf0efe43791090d6a1dc79801d87e514b65bea
 
             return ludoGameResponse.Data;
         }
@@ -115,11 +109,6 @@ namespace LudoWebApp.Controllers
 
         public List<Player> GetSpecificGamePlayers(int gameId)
         {
-<<<<<<< HEAD
-            var client = new RestClient("http://someserver.com/api");
-            var request = new RestRequest("ludo/{id}/players", Method.GET);
-            //request.AddUrlSegment("id", "123"); // replaces matching token in request.Resource
-=======
             var client = new RestClient("http://localhost:52858/api");
             var request = new RestRequest("ludo/{gameId}/players", Method.GET);
             request.AddUrlSegment("gameId", gameId); // replaces matching token in request.Resource
@@ -129,7 +118,6 @@ namespace LudoWebApp.Controllers
             // Om det blir fel svar från API:et så kasta ett fel istället för att gå vidare
             if (ludoGameResponse.ErrorException != null)
                 throw ludoGameResponse.ErrorException;
->>>>>>> 8caf0efe43791090d6a1dc79801d87e514b65bea
 
             return ludoGameResponse.Data;
         }
@@ -155,7 +143,7 @@ namespace LudoWebApp.Controllers
             var client = new RestClient("http://someserver.com/api");
 
             var request = new RestRequest("ludo/", Method.POST);
-            request.AddJsonBody();//lägg till det som är i creategae så man kan skapa spel
+            //request.AddJsonBody();//lägg till det som är i creategae så man kan skapa spel
 
 
         }
