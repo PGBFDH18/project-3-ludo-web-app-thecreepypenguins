@@ -162,11 +162,17 @@ namespace LudoWebApp.Controllers
 
 
         }
+        public void AddPlayerToGame()
+        {
+            var client = new RestClient("http://someserver.com/api");
 
-        //public void UpdatePiece()
-        //{
-        //    var request = new RestRequest;
-        //}
+            var request = new RestRequest("ludo/{gameId}/players/{playerId}", Method.POST);
+
+
+            // request.AddJsonBody(); 
+
+
+        }
     }
 
 
