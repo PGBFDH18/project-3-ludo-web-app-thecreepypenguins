@@ -10,7 +10,7 @@ namespace LudoWebApp.LudoModels
         public int PlayerId { get; set; }
         public string Name { get; set; }
         public string PlayerColor { get; set; }
-        public List<Piece> Pieces { get; set; }
+        public Piece[] Pieces { get; set; }
         public int Offset { get; set; }
     }
 }
