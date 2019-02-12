@@ -5,8 +5,6 @@ using System.Threading.Tasks;
 
 namespace LudoWebApp.LudoModels
 {
-    public class PieceGameState
-    {
         public enum PieceGameStates
         {
             HomeArea,
@@ -14,6 +12,4 @@ namespace LudoWebApp.LudoModels
             GoalPath,
             Goal
         }
-
-    }
 }
