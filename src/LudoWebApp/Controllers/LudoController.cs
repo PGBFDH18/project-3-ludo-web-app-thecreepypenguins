@@ -18,14 +18,14 @@ namespace LudoWebApp.Controllers
         private readonly ILogger logger;
 
         //konstruktor, loggar sätts vid hjälp av dependency injection
-        public LudoController(ILogger logger)
+        public LudoController(ILogger<LudoController> logger)
         {
             this.logger = logger;
         }
 
         public IActionResult Index()
         {
-            logger.LogInformation("get all games");
+            logger.LogInformation(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> get all games");
 
             /* test för utskrift
             SpecificGame result = new SpecificGame()
@@ -64,17 +64,20 @@ namespace LudoWebApp.Controllers
             return View(viewModel);
         }
 
-        //public IActionResult RollDice(int gameId)
-        //{
-        //    SpecificGamePlayers result = GetSpeficifGameFromAPi(gameId);
+        public IActionResult RollDice(int gameId)
+        {
+            var viewModel = new LudoViewModel();
 
-        //    // Testa att kasta en tärning, tärningen skall egentligen komma från REST API projektet
-        //    var r = new Random();
-        //    result.dice = r.Next(6) + 1;
+            var r = new Random();
+            viewModel.Dice = r.Next(6) + 1;
 
-        //    //"Index" för att få samma utseende som index metoden
-        //    return View("Index", result);
-        //}
+            // Testa att kasta en tärning, tärningen skall egentligen komma från REST API projektet
+            //var r = new Random();
+            //result.dice = r.Next(6) + 1;
+
+            //"Index" för att få samma utseende som index metoden
+            return View("Index", viewModel);
+        }
 
         public Game GetSpeficifGameFromAPi(int gameId)
         {
@@ -159,6 +162,11 @@ namespace LudoWebApp.Controllers
 
 
         }
+
+        //public void UpdatePiece()
+        //{
+        //    var request = new RestRequest;
+        //}
     }
 
 

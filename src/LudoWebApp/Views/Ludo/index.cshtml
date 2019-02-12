@@ -156,10 +156,14 @@
         <div class="infoGame">
 
             @*Skriver ut resultatet ut till view*@
-            @foreach (var game in Model.AllGames)
+            @if (Model.AllGames != null)
             {
-                @:GameId @game.GameId, number of players: @game.Players.Count() , State: @game.GameState <br />
+                foreach (var game in Model.AllGames)
+                {
+                    @:GameId @game.GameId, number of players: @game.Players.Count() , State: @game.GameState <br />
+                }
             }
+
         </div>
         <div class="currentPlayer">Current player </div>
         <div class="dice">
@@ -208,12 +212,12 @@
         </div>
 
         @* ? =  *@
-        @*<button class="button">@Html.ActionLink("Roll dice", "RollDice", null, new { gameId = Model.CurrentGame?.GameId }, new { @class = "button" })</button>*@*@*@
+        @*<button class="button">@Html.ActionLink("Roll dice", "RollDice", null, new { gameId = Model.CurrentGame?.GameId }, new { @class = "button" })</button>*@
 
 
 
         @*Knapp med hjälp av Razors inbyggda html helper*@
-        <--> @Html.ActionLink("Roll dice", "RollDice", null, new { gameId = Model.CurrentGame}, new { @class = "button" })</-->
+        @Html.ActionLink("Roll dice", "RollDice", null, new { gameId = Model.CurrentGame}, new { @class = "button" })
 
         @*klumpit sätt för att använda HTML button taggen som inte stöds av Razor*@
         @*<button onclick="location".href='@Url.Action("RollDice")';return false;" class="button">Roll Dice</button>
