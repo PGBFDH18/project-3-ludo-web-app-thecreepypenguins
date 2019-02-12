@@ -1,4 +1,4 @@
-﻿@model LudoWebApp.LudoModels.SpecificGamePlayers
+﻿@model LudoWebApp.Models.LudoViewModel
 @{
     ViewData["Title"] = "Ludo Game";
     Layout = "_LudoLayout";
@@ -6,209 +6,220 @@
 
 <!-- Lagt till detta för att få ett spelplan -->
 
-    <div id="gameWrapper">
-        <div class="board">
-            <div class="wing" id="leftWing">
-                <div class="field">1</div>
-                <div class="field player2"></div>
-                <div class="field"></div>
-                <div class="field"></div>
-                <div class="field"></div>
-                <div class="field"></div>
-                <div class="field"></div>
-                <div class="field player2"></div>
-                <div class="field player2"></div>
-                <div class="field player2"></div>
-                <div class="field player2"></div>
-                <div class="field player2"></div>
-                <div class="field"></div>
-                <div class="field"></div>
-                <div class="field"></div>
-                <div class="field"></div>
-                <div class="field"></div>
-                <div class="field"></div>
-            </div>
-            <div class="wing" id="rightWing">
-                <div class="field"></div>
-                <div class="field player3"></div>
-                <div class="field"></div>
-                <div class="field"></div>
-                <div class="field"></div>
-                <div class="field"></div>
-                <div class="field"></div>
-                <div class="field player3"></div>
-                <div class="field player3"></div>
-                <div class="field player3"></div>
-                <div class="field player3"></div>
-                <div class="field player3"></div>
-                <div class="field"></div>
-                <div class="field"></div>
-                <div class="field"></div>
-                <div class="field"></div>
-                <div class="field"></div>
-                <div class="field"></div>
-            </div>
-            <div class="wing" id="topWing">
-                <div class="field"></div>
-                <div class="field player4"></div>
-                <div class="field"></div>
-                <div class="field"></div>
-                <div class="field"></div>
-                <div class="field"></div>
-                <div class="field"></div>
-                <div class="field player4"></div>
-                <div class="field player4"></div>
-                <div class="field player4"></div>
-                <div class="field player4"></div>
-                <div class="field player4"></div>
-                <div class="field"></div>
-                <div class="field"></div>
-                <div class="field"></div>
-                <div class="field"></div>
-                <div class="field"></div>
-                <div class="field"></div>
-            </div>
-            <div class="wing" id="bottomWing">
-                <div class="field"></div>
-                <div class="field player1"></div>
-                <div class="field"></div>
-                <div class="field"></div>
-                <div class="field"></div>
-                <div class="field"></div>
-                <div class="field"></div>
-                <div class="field player1"></div>
-                <div class="field player1"></div>
-                <div class="field player1"></div>
-                <div class="field player1"></div>
-                <div class="field player1"></div>
-                <div class="field"></div>
-                <div class="field"></div>
-                <div class="field"></div>
-                <div class="field"></div>
-                <div class="field"></div>
-                <div class="field"></div>
-            </div>
+<div id="gameWrapper">
+    <div class="board">
+        <div class="wing" id="leftWing">
+            <div class="field">1</div>
+            <div class="field player2"></div>
+            <div class="field"></div>
+            <div class="field"></div>
+            <div class="field"></div>
+            <div class="field"></div>
+            <div class="field"></div>
+            <div class="field player2"></div>
+            <div class="field player2"></div>
+            <div class="field player2"></div>
+            <div class="field player2"></div>
+            <div class="field player2"></div>
+            <div class="field"></div>
+            <div class="field"></div>
+            <div class="field"></div>
+            <div class="field"></div>
+            <div class="field"></div>
+            <div class="field"></div>
+        </div>
+        <div class="wing" id="rightWing">
+            <div class="field"></div>
+            <div class="field player3"></div>
+            <div class="field"></div>
+            <div class="field"></div>
+            <div class="field"></div>
+            <div class="field"></div>
+            <div class="field"></div>
+            <div class="field player3"></div>
+            <div class="field player3"></div>
+            <div class="field player3"></div>
+            <div class="field player3"></div>
+            <div class="field player3"></div>
+            <div class="field"></div>
+            <div class="field"></div>
+            <div class="field"></div>
+            <div class="field"></div>
+            <div class="field"></div>
+            <div class="field"></div>
+        </div>
+        <div class="wing" id="topWing">
+            <div class="field"></div>
+            <div class="field player4"></div>
+            <div class="field"></div>
+            <div class="field"></div>
+            <div class="field"></div>
+            <div class="field"></div>
+            <div class="field"></div>
+            <div class="field player4"></div>
+            <div class="field player4"></div>
+            <div class="field player4"></div>
+            <div class="field player4"></div>
+            <div class="field player4"></div>
+            <div class="field"></div>
+            <div class="field"></div>
+            <div class="field"></div>
+            <div class="field"></div>
+            <div class="field"></div>
+            <div class="field"></div>
+        </div>
+        <div class="wing" id="bottomWing">
+            <div class="field"></div>
+            <div class="field player1"></div>
+            <div class="field"></div>
+            <div class="field"></div>
+            <div class="field"></div>
+            <div class="field"></div>
+            <div class="field"></div>
+            <div class="field player1"></div>
+            <div class="field player1"></div>
+            <div class="field player1"></div>
+            <div class="field player1"></div>
+            <div class="field player1"></div>
+            <div class="field"></div>
+            <div class="field"></div>
+            <div class="field"></div>
+            <div class="field"></div>
+            <div class="field"></div>
+            <div class="field"></div>
+        </div>
 
-            <div class="goal"></div>
-            <div class="start player1">
+        <div class="goal"></div>
+        <div class="start player1">
 
-                <div class="field">
-                    <div class="brick player1"></div>
-                </div>
-                <div class="field">
-                    <div class="brick player1"></div>
-                </div>
-                <div class="field">
-                    <div class="brick player1"></div>
-                </div>
-                <div class="field">
-                    <div class="brick player1"></div>
-                </div>
+            <div class="field">
+                <div class="brick player1"></div>
             </div>
-
-            <div class="start player2">
-                <div class="field">
-                    <div class="brick player2"></div>
-                </div>
-                <div class="field">
-                    <div class="brick player2"></div>
-                </div>
-                <div class="field">
-                    <div class="brick player2"></div>
-                </div>
-                <div class="field">
-                    <div class="brick player2"></div>
-                </div>
+            <div class="field">
+                <div class="brick player1"></div>
             </div>
-            <div class="start player3">
-                <div class="field">
-                    <div class="brick player3"></div>
-                </div>
-                <div class="field">
-                    <div class="brick player3"></div>
-                </div>
-                <div class="field">
-                    <div class="brick player3"></div>
-                </div>
-                <div class="field">
-                    <div class="brick player3"></div>
-                </div>
+            <div class="field">
+                <div class="brick player1"></div>
             </div>
-            <div class="start player4">
-                <div class="field">
-                    <div class="brick player4"></div>
-                </div>
-                <div class="field">
-                    <div class="brick player4"></div>
-                </div>
-                <div class="field">
-                    <div class="brick player4"></div>
-                </div>
-                <div class="field">
-                    <div class="brick player4"></div>
-                </div>
+            <div class="field">
+                <div class="brick player1"></div>
             </div>
         </div>
-        <div class="gameInfo">
 
-            @*nedan är en bild, hade den för att testa mig fram bara*
-        @*<img src="~/images/1528080671pikachu-not-happy-pokemon-png.png" width="104" height="142">*@
-            <div class="currentPlayer">Current player </div>
-            <div class="dice">
-                @{
-                    //Model.Dice = 6; // Testa tärning
-                }
-                @if (Model.dice == 1)
-                {
-                    <div class="diceDot" id="center"></div>
-                }
-                else if (Model.dice == 2)
-                {
-                    <div class="diceDot" id="leftUpper"></div>
-                    <div class="diceDot" id="rightLower"></div>
-                }
-                else if (Model.dice == 3)
-                {
-                    <div class="diceDot" id="leftUpper"></div>
-                    <div class="diceDot" id="center"></div>
-                    <div class="diceDot" id="rightLower"></div>
-                }
-                else if (Model.dice == 4)
-                {
-                    <div class="diceDot" id="leftUpper"></div>
-                    <div class="diceDot" id="leftLower"></div>
-                    <div class="diceDot" id="rightUpper"></div>
-                    <div class="diceDot" id="rightLower"></div>
-                }
-                else if (Model.dice == 5)
-                {
-                    <div class="diceDot" id="leftUpper"></div>
-                    <div class="diceDot" id="leftLower"></div>
-                    <div class="diceDot" id="center"></div>
-                    <div class="diceDot" id="rightUpper"></div>
-                    <div class="diceDot" id="rightLower"></div>
-                }
-                else if (Model.dice == 6)
-                {
-                    <div class="diceDot" id="leftUpper"></div>
-                    <div class="diceDot" id="leftMiddel"></div>
-                    <div class="diceDot" id="leftLower"></div>
-                    <div class="diceDot" id="rightUpper"></div> 
-                    <div class="diceDot" id="rightMiddel"></div>
-                    <div class="diceDot" id="rightLower"></div>
-                }
+        <div class="start player2">
+            <div class="field">
+                <div class="brick player2"></div>
             </div>
-            
-            <button class="button">@Html.ActionLink("Roll dice", "RollDice", null, new { gameId = Model.gameId }, new { @class = "button" })</button>
-
-
-
-            @*Knapp med hjälp av Razors inbyggda html helper*@
-           @*<--> @Html.ActionLink("Roll dice", "RollDice", null, new { gameId = Model.gameId }, new { @class = "button" })</-->*@
-
-            @*klumpit sätt för att använda HTML button taggen som inte stöds av Razor*@
-            @*<button onclick="location".href='@Url.Action("RollDice")';return false;" class="button">Roll Dice</button>
-
-            <button onclick="" class="button">Dice</button>*@
+            <div class="field">
+                <div class="brick player2"></div>
+            </div>
+            <div class="field">
+                <div class="brick player2"></div>
+            </div>
+            <div class="field">
+                <div class="brick player2"></div>
+            </div>
+        </div>
+        <div class="start player3">
+            <div class="field">
+                <div class="brick player3"></div>
+            </div>
+            <div class="field">
+                <div class="brick player3"></div>
+            </div>
+            <div class="field">
+                <div class="brick player3"></div>
+            </div>
+            <div class="field">
+                <div class="brick player3"></div>
+            </div>
+        </div>
+        <div class="start player4">
+            <div class="field">
+                <div class="brick player4"></div>
+            </div>
+            <div class="field">
+                <div class="brick player4"></div>
+            </div>
+            <div class="field">
+                <div class="brick player4"></div>
+            </div>
+            <div class="field">
+                <div class="brick player4"></div>
+            </div>
         </div>
     </div>
+    <div class="gameInfo">
+
+        @*nedan är en bild, hade den för att testa mig fram bara*
+        @*<img src="~/images/1528080671pikachu-not-happy-pokemon-png.png" width="104" height="142">*@
+        <div class="infoGame">
+
+            @*Skriver ut resultatet ut till view*@
+            @foreach (var game in Model.AllGames)
+            {
+                @:GameId @game.GameId, number of players: @game.Players.Count() , State: @game.GameState <br />
+            }
+        </div>
+        <div class="currentPlayer">Current player </div>
+        <div class="dice">
+            @{
+                //Model.dice =6; // Testa tärning
+            }
+            @if (Model.Dice == 1)
+            {
+                <div class="diceDot" id="center"></div>
+            }
+            else if (Model.Dice == 2)
+            {
+                <div class="diceDot" id="leftUpper"></div>
+                <div class="diceDot" id="rightLower"></div>
+            }
+            else if (Model.Dice == 3)
+            {
+                <div class="diceDot" id="leftUpper"></div>
+                <div class="diceDot" id="center"></div>
+                <div class="diceDot" id="rightLower"></div>
+            }
+            else if (Model.Dice == 4)
+            {
+                <div class="diceDot" id="leftUpper"></div>
+                <div class="diceDot" id="leftLower"></div>
+                <div class="diceDot" id="rightUpper"></div>
+                <div class="diceDot" id="rightLower"></div>
+            }
+            else if (Model.Dice == 5)
+            {
+                <div class="diceDot" id="leftUpper"></div>
+                <div class="diceDot" id="leftLower"></div>
+                <div class="diceDot" id="center"></div>
+                <div class="diceDot" id="rightUpper"></div>
+                <div class="diceDot" id="rightLower"></div>
+            }
+            else if (Model.Dice == 6)
+            {
+                <div class="diceDot" id="leftUpper"></div>
+                <div class="diceDot" id="leftMiddel"></div>
+                <div class="diceDot" id="leftLower"></div>
+                <div class="diceDot" id="rightUpper"></div>
+                <div class="diceDot" id="rightMiddel"></div>
+                <div class="diceDot" id="rightLower"></div>
+            }
+        </div>
+
+        @* ? =  *@
+        <button class="button">@Html.ActionLink("Roll dice", "RollDice", null, new { gameId = Model.CurrentGame?.GameId }, new { @class = "button" })</button>
+
+
+
+        @*Knapp med hjälp av Razors inbyggda html helper*@
+        @*<--> @Html.ActionLink("Roll dice", "RollDice", null, new { gameId = Model.gameId }, new { @class = "button" })</-->*@
+
+        @*klumpit sätt för att använda HTML button taggen som inte stöds av Razor*@
+        @*<button onclick="location".href='@Url.Action("RollDice")';return false;" class="button">Roll Dice</button>
+
+        <button onclick="" class="button">Dice</button>*@
+
+
+    </div>
+</div>
