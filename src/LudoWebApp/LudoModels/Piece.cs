@@ -10,7 +10,5 @@ namespace LudoWebApp.LudoModels
         public int PieceId { get; set; }
         public PieceGameStates State { get; set; }
         public int Position { get; set; }
-
-
     }
 }
