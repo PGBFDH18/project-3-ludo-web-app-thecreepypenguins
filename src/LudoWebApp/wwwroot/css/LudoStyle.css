@@ -18,9 +18,10 @@ html{
     border: 2px solid black;
     margin:0px;
     padding:0px;
-    position: absolute;
+    position: relative;
+    /*position: absolute;
     top: 150px;
-    left: 50px;
+    left: 50px;*/
 }
 
 
@@ -190,4 +191,9 @@ html{
 .start.player4{
     left:540px;
     top:0px;
+}
+
+.errorMessage{
+    color: red;
+    margin: 15px;
 }

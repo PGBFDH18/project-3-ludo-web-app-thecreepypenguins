@@ -152,7 +152,7 @@
     <div class="gameInfo">
 
         @*nedan är en bild, hade den för att testa mig fram bara*
-        @*<img src="~/images/1528080671pikachu-not-happy-pokemon-png.png" width="104" height="142">*@
+            @*<img src="~/images/1528080671pikachu-not-happy-pokemon-png.png" width="104" height="142">*@
         <div class="infoGame">
 
             @*Skriver ut resultatet ut till view*@
@@ -165,64 +165,156 @@
             }
 
         </div>
-        <div class="currentPlayer">Current player </div>
-        <div class="dice">
-            @{
-                //Model.dice =6; // Testa tärning
-            }
-            @if (Model.Dice == 1)
-            {
-                <div class="diceDot" id="center"></div>
-            }
-            else if (Model.Dice == 2)
-            {
-                <div class="diceDot" id="leftUpper"></div>
-                <div class="diceDot" id="rightLower"></div>
-            }
-            else if (Model.Dice == 3)
-            {
-                <div class="diceDot" id="leftUpper"></div>
-                <div class="diceDot" id="center"></div>
-                <div class="diceDot" id="rightLower"></div>
-            }
-            else if (Model.Dice == 4)
-            {
-                <div class="diceDot" id="leftUpper"></div>
-                <div class="diceDot" id="leftLower"></div>
-                <div class="diceDot" id="rightUpper"></div>
-                <div class="diceDot" id="rightLower"></div>
-            }
-            else if (Model.Dice == 5)
-            {
-                <div class="diceDot" id="leftUpper"></div>
-                <div class="diceDot" id="leftLower"></div>
-                <div class="diceDot" id="center"></div>
-                <div class="diceDot" id="rightUpper"></div>
-                <div class="diceDot" id="rightLower"></div>
-            }
-            else if (Model.Dice == 6)
-            {
-                <div class="diceDot" id="leftUpper"></div>
-                <div class="diceDot" id="leftMiddel"></div>
-                <div class="diceDot" id="leftLower"></div>
-                <div class="diceDot" id="rightUpper"></div>
-                <div class="diceDot" id="rightMiddel"></div>
-                <div class="diceDot" id="rightLower"></div>
-            }
-        </div>
-
+        @*visas endas tärningen om den har ett värde*@
+        @if (Model.Dice > 0)
+        {
+            <div class="dice">
+                @{
+                    //Model.dice =6; // Testa tärning
+                }
+                @if (Model.Dice == 1)
+                {
+                    <div class="diceDot" id="center"></div>
+                }
+                else if (Model.Dice == 2)
+                {
+                    <div class="diceDot" id="leftUpper"></div>
+                    <div class="diceDot" id="rightLower"></div>
+                }
+                else if (Model.Dice == 3)
+                {
+                    <div class="diceDot" id="leftUpper"></div>
+                    <div class="diceDot" id="center"></div>
+                    <div class="diceDot" id="rightLower"></div>
+                }
+                else if (Model.Dice == 4)
+                {
+                    <div class="diceDot" id="leftUpper"></div>
+                    <div class="diceDot" id="leftLower"></div>
+                    <div class="diceDot" id="rightUpper"></div>
+                    <div class="diceDot" id="rightLower"></div>
+                }
+                else if (Model.Dice == 5)
+                {
+                    <div class="diceDot" id="leftUpper"></div>
+                    <div class="diceDot" id="leftLower"></div>
+                    <div class="diceDot" id="center"></div>
+                    <div class="diceDot" id="rightUpper"></div>
+                    <div class="diceDot" id="rightLower"></div>
+                }
+                else if (Model.Dice == 6)
+                {
+                    <div class="diceDot" id="leftUpper"></div>
+                    <div class="diceDot" id="leftMiddel"></div>
+                    <div class="diceDot" id="leftLower"></div>
+                    <div class="diceDot" id="rightUpper"></div>
+                    <div class="diceDot" id="rightMiddel"></div>
+                    <div class="diceDot" id="rightLower"></div>
+                }
+            </div>
+        }
         @* ? =  *@
         @*<button class="button">@Html.ActionLink("Roll dice", "RollDice", null, new { gameId = Model.CurrentGame?.GameId }, new { @class = "button" })</button>*@
 
 
 
-        @*Knapp med hjälp av Razors inbyggda html helper*@
-        @Html.ActionLink("Roll dice", "RollDice", null, new { gameId = Model.CurrentGame}, new { @class = "button" })
 
         @*klumpit sätt för att använda HTML button taggen som inte stöds av Razor*@
         @*<button onclick="location".href='@Url.Action("RollDice")';return false;" class="button">Roll Dice</button>
 
-        <button onclick="" class="button">Dice</button>*@
+            <button onclick="" class="button">Dice</button>*@
+
+        @*om inget spela har skapats, visa då ett formulär*@
+        @if (Model.CurrentGame == null)
+        {
+            //Detta är ett form tag
+            @using (Html.BeginForm("CreateNewGame", null, FormMethod.Post))
+            {
+                //Varje player är en drop down lista
+                @:Player1
+                @Html.DropDownList("ColorPlayer1", new List<SelectListItem>
+                     {
+                        new SelectListItem { Text = "", Value = "-1" },
+                        new SelectListItem { Text = "Red", Value = "0" },
+                        new SelectListItem { Text = "Green", Value = "1" },
+                        new SelectListItem { Text = "Blue", Value = "2" },
+                        new SelectListItem { Text = "Yellow", Value = "3" },
+                     })
+                <br />
+
+                @:Player2
+                @Html.DropDownList("ColorPlayer2", new List<SelectListItem>
+                     {
+                        new SelectListItem { Text = "", Value = "-1" },
+                        new SelectListItem { Text = "Red", Value = "0" },
+                        new SelectListItem { Text = "Green", Value = "1" },
+                        new SelectListItem { Text = "Blue", Value = "2" },
+                        new SelectListItem { Text = "Yellow", Value = "3" },
+                     })
+
+                <br />
+                @:Player3
+                @Html.DropDownList("ColorPlayer3", new List<SelectListItem>
+                     {
+                        new SelectListItem { Text = "", Value = "-1" },
+                        new SelectListItem { Text = "Red", Value = "0" },
+                        new SelectListItem { Text = "Green", Value = "1" },
+                        new SelectListItem { Text = "Blue", Value = "2" },
+                        new SelectListItem { Text = "Yellow", Value = "3" },
+                     })
+                <br />
+
+                @:Player4
+                @Html.DropDownList("ColorPlayer4", new List<SelectListItem>
+                     {
+                        new SelectListItem { Text = "", Value = "-1" },
+                        new SelectListItem { Text = "Red", Value = "0" },
+                        new SelectListItem { Text = "Green", Value = "1" },
+                        new SelectListItem { Text = "Blue", Value = "2" },
+                        new SelectListItem { Text = "Yellow", Value = "3" },
+                     })
+                <br />
+
+                // allt innanför div taggen kommer få röd text
+                <div class="errorMessage">
+                    @Html.ValidationSummary()
+                </div>
+
+                //Knappen till skapa spel
+                <input type="submit" value="Create Game" />
+            }
+        }
+        else
+        {
+            //Om spelet har börjat
+            if (Model.CurrentGame.GameState == LudoWebApp.LudoModels.GameState.Started)
+            {
+
+                @: Game started with id @Model.CurrentGame.GameId<br />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <div class="currentPlayer">Current player @Model.CurrentGame.CurrentPlayer.Name</div>
+
+                //Detta ligger här för att kasta tärningen knappen ska synas när spelet har startat
+                @*Knapp med hjälp av Razors inbyggda html helper*@
+                @Html.ActionLink("Roll dice", "RollDice", null, new { gameId = Model.CurrentGame }, new { @class = "button" })
+
+            }
+        }
 
 
     </div>

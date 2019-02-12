@@ -38,7 +38,7 @@ namespace LudoWebApp.Controllers
 
             //TEsta get metoderna med hjälp av postman, man måste först skapa spelet med hjälå av postman. och lägga till spelare
 
-            var allGames = GetGamesFromAPI(); // ta fram alla spel
+            //var allGames = GetGamesFromAPI(); // ta fram alla spel
             //var player = GetSpecificPlayer(0, 0); // ta fram en spelare ifrån ett spel
             //var playersInGame = GetSpecificGamePlayers(0); // ta fram alla spelare i ett spel
             //var game = GetSpeficifGameFromAPi(0); //hämta ett spel och få alla detaljer om det
@@ -58,7 +58,6 @@ namespace LudoWebApp.Controllers
                 viewModel.AllGames.Add(GetSpeficifGameFromAPi(gameId));
             }
 
-            viewModel.Dice = 4;
 
             //en klass som skicka in i view 
             return View(viewModel);
@@ -77,6 +76,73 @@ namespace LudoWebApp.Controllers
 
             //"Index" för att få samma utseende som index metoden
             return View("Index", viewModel);
+        }
+
+        public IActionResult CreateNewGame(LudoViewModel viewModel)
+        {
+            //var client = new RestClient("http://someserver.com/api");
+
+            //var request = new RestRequest("ludo/", Method.POST);
+            //request.AddJsonBody();//lägg till det som är i creategae så man kan skapa spel
+
+            List<Player> players = new List<Player>();
+
+            if (viewModel.ColorPlayer1 != "-1")
+            {
+                players.Add(new Player() { PlayerColor = viewModel.ColorPlayer1 });
+            }
+            if (viewModel.ColorPlayer2 != "-1")
+            {
+                players.Add(new Player() { PlayerColor = viewModel.ColorPlayer2 });
+            }
+            if (viewModel.ColorPlayer3 != "-1")
+            {
+                players.Add(new Player() { PlayerColor = viewModel.ColorPlayer3 });
+            }
+            if (viewModel.ColorPlayer4 != "-1")
+            {
+                players.Add(new Player() { PlayerColor = viewModel.ColorPlayer4 });
+            }
+
+            if (players.Count() < 2)
+            {
+                ModelState.AddModelError("Player1", "Minimum 2 players");
+            }
+
+            // Om inga fel uppstod skapa spelet
+            if (ModelState.IsValid)
+            {
+                //skapa spelet i api
+                int gameId = CreateGameUsingApi();
+
+                //lägg till spelare
+                foreach (var player in players)
+                {
+                    AddPlayerToGame(gameId, player.PlayerColor);
+                }
+
+                //hämtar spelet ifrån api
+                viewModel.CurrentGame = GetSpeficifGameFromAPi(gameId);
+                
+            }
+
+            //"Index" för att få samma utseende som index metoden
+            return View("Index", viewModel);
+        }
+
+        //med hjälp av API så skapas spelet
+        public int CreateGameUsingApi()
+        {
+            var client = new RestClient("http://localhost:52858/api"); //LOCALHOST PÅ VÅRT API NÄR VI STARTAT UPP DET!!!
+            var request = new RestRequest("ludo/", Method.POST);
+
+            IRestResponse<int> ludoGameResponse = client.Execute<int>(request);
+
+            // Om det blir fel svar från API:et så kasta ett fel istället för att gå vidare
+            if (ludoGameResponse.ErrorException != null)
+                throw ludoGameResponse.ErrorException;
+
+            return ludoGameResponse.Data;
         }
 
         public Game GetSpeficifGameFromAPi(int gameId)
@@ -153,26 +219,31 @@ namespace LudoWebApp.Controllers
             return playerResponse.Data;
         }
 
-        public void CreateNewGame()
+        public Player AddPlayerToGame(int gameId, string playerColor)
         {
-            var client = new RestClient("http://someserver.com/api");
+            var client = new RestClient("http://localhost:52858/api"); //LOCALHOST PÅ VÅRT API NÄR VI STARTAT UPP DET!!!
+            var request = new RestRequest("ludo/{gameId}/players", Method.POST);
+            request.AddUrlSegment("gameId", gameId); // replaces matching token in request.Resource
+            request.AddQueryParameter("color", playerColor);
+            request.AddQueryParameter("name", "Player " + playerColor);
 
-            var request = new RestRequest("ludo/", Method.POST);
-            //request.AddJsonBody();//lägg till det som är i creategae så man kan skapa spel
+            IRestResponse<Player> ludoGameResponse = client.Execute<Player>(request);
 
+            // Om det blir fel svar från API:et så kasta ett fel istället för att gå vidare
+            if (ludoGameResponse.ErrorException != null)
+                throw ludoGameResponse.ErrorException;
 
+            return ludoGameResponse.Data;
         }
-        public void AddPlayerToGame()
-        {
-            var client = new RestClient("http://someserver.com/api");
+        //public void UpdatePices() //updatera en pjäs
+        //{
+        //    var client = new RestClient("http://someserver.com/api");
 
-            var request = new RestRequest("ludo/{gameId}/players/{playerId}", Method.POST);
-
-
-            // request.AddJsonBody(); 
+        //    var request = new RestRequest("ludo/{gameId}/players/{playerId}", Method.POST);
 
 
-        }
+        //    // request.AddJsonBody(); 
+        //}
     }
 
 
