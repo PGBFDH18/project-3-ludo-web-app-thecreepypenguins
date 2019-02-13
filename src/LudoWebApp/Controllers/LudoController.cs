@@ -99,6 +99,12 @@ namespace LudoWebApp.Controllers
             request.AddParameter("name", "value");
 
         }
+
+        public IRestResponse Run(Step s, ScenarioContext context)
+        {
+            var client = new RestClient(Step.Host);
+            return client.Delete(restRequest);
+        }
     }
 
 
