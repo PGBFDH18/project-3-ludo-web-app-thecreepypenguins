@@ -7,6 +7,10 @@ html{
     position:relative;
 }
 
+.infoGame {
+    position: relative;
+}
+
 .dice{
     width: 56px; 
     height: 56px;  
@@ -14,9 +18,10 @@ html{
     border: 2px solid black;
     margin:0px;
     padding:0px;
-    position: absolute;
+    position: relative;
+    /*position: absolute;
     top: 150px;
-    left: 50px;
+    left: 50px;*/
 }
 
 
@@ -66,7 +71,7 @@ html{
 }
 
 .gameInfo{
-    width:100px;
+    /*width:100px;*/  /*så att texten får plats*/
     height:50px;
     top:20px;
     left:920px;
@@ -186,4 +191,9 @@ html{
 .start.player4{
     left:540px;
     top:0px;
+}
+
+.errorMessage{
+    color: red;
+    margin: 15px;
 }
