@@ -67,12 +67,18 @@ namespace LudoWebApp.Controllers
         {
             var viewModel = new LudoViewModel();
 
-            var r = new Random();
-            viewModel.Dice = r.Next(6) + 1;
+            //hämtar ett värde ifrån api tärningen
+            var client = new RestClient("http://localhost:52858/api"); //LOCALHOST PÅ VÅRT API NÄR VI STARTAT UPP DET!!!
+            var request = new RestRequest("ludo/{gameId}", Method.PUT);
+            request.AddUrlSegment("gameId", gameId); // replaces matching token in request.Resource
 
-            // Testa att kasta en tärning, tärningen skall egentligen komma från REST API projektet
-            //var r = new Random();
-            //result.dice = r.Next(6) + 1;
+            IRestResponse<PutGame> ludoGameResponse = client.Execute<PutGame>(request);
+
+            viewModel.Dice = ludoGameResponse.Data.diece;
+
+            var x = GetSpeficifGameFromAPi(gameId);
+
+            viewModel.CurrentGame = x;
 
             //"Index" för att få samma utseende som index metoden
             return View("Index", viewModel);
