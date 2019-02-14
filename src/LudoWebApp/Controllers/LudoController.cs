@@ -79,7 +79,17 @@ namespace LudoWebApp.Controllers
 
             IRestResponse<PutGame> ludoGameResponse = client.Execute<PutGame>(request);
 
-            viewModel.Dice = ludoGameResponse.Data.diece;
+            //kontrollerar om ett fel skickats från API:et
+            if (ludoGameResponse.StatusCode != System.Net.HttpStatusCode.OK)
+            {
+                //Modelstate är en mvc model
+                //validerings summary visas på skärmen 
+                ModelState.AddModelError("", ludoGameResponse.Content.Replace("\"", ""));
+            }
+            else
+            {
+                viewModel.Dice = ludoGameResponse.Data.diece;
+            }
 
             var x = GetSpeficifGameFromAPi(gameId);
 
@@ -115,13 +125,8 @@ namespace LudoWebApp.Controllers
                 players.Add(new Player() { PlayerColor = viewModel.ColorPlayer4 });
             }
 
-            if (players.Count() < 2)
-            {
-                ModelState.AddModelError("Player1", "Minimum 2 players");
-            }
-
-            // Om inga fel uppstod skapa spelet
-            if (ModelState.IsValid)
+            //här sker det när AddPlayerToGame fångar fel
+            try
             {
                 //skapa spelet i api
                 int gameId = CreateGameUsingApi();
@@ -134,7 +139,13 @@ namespace LudoWebApp.Controllers
 
                 //hämtar spelet ifrån api
                 viewModel.CurrentGame = GetSpeficifGameFromAPi(gameId);
-                
+            }
+            catch (Exception ex)
+            {
+                //AddModelError = en metod som lägger till ett specefik fel i fel listan.
+                //ModelState = en klass i MVC ramverket. som använder AddModelError metoden.
+                //tar medelande och tar bort "".
+                ModelState.AddModelError("", ex.Message.Replace("\"", ""));
             }
 
             //"Index" för att få samma utseende som index metoden
@@ -239,6 +250,10 @@ namespace LudoWebApp.Controllers
             request.AddQueryParameter("name", "Player " + playerColor);
 
             IRestResponse<Player> ludoGameResponse = client.Execute<Player>(request);
+
+            //kontrollerar om ett fel skickats från API:et
+            if (ludoGameResponse.StatusCode != System.Net.HttpStatusCode.OK)
+                throw new Exception(ludoGameResponse.Content);
 
             // Om det blir fel svar från API:et så kasta ett fel istället för att gå vidare
             if (ludoGameResponse.ErrorException != null)
