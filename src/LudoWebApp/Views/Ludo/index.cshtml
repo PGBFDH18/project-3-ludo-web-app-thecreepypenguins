@@ -282,7 +282,7 @@
         else
         {
             //Om spelet har börjat
-            if (Model.CurrentGame.GameState == LudoWebApp.LudoModels.GameState.Started)
+            if (Model.CurrentGame.GameState != LudoWebApp.LudoModels.GameState.Ended)
             {
 
                 @: Game started with id @Model.CurrentGame.GameId<br />
@@ -297,7 +297,7 @@
 
         }
 
-        // allt innanför div taggen kommer få röd text
+        @*// allt innanför div taggen kommer få röd text*@
         <div class="errorMessage">
             @Html.ValidationSummary()
         </div>
