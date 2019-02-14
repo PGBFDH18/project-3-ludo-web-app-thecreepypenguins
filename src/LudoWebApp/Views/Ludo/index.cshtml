@@ -311,7 +311,7 @@
 
                 //Detta ligger här för att kasta tärningen knappen ska synas när spelet har startat
                 @*Knapp med hjälp av Razors inbyggda html helper*@
-                @Html.ActionLink("Roll dice", "RollDice", null, new { gameId = Model.CurrentGame }, new { @class = "button" })
+                @Html.ActionLink("Roll dice", "RollDice", null, new { gameId = Model.CurrentGame.GameId}, new { @class = "button" })
 
             }
         }

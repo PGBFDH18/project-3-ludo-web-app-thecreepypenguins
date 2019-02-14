@@ -8,8 +8,7 @@ namespace LudoWebApp.LudoModels
     public class PutGame
     {
         public int diece { get; set; }
-        public int piece { get; set; }
-        public int player { get; set; }
-
+        public Piece piece;
+        public Player player;
     }
 }
