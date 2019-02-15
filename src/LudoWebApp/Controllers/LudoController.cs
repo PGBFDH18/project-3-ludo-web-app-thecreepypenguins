@@ -129,9 +129,6 @@ namespace LudoWebApp.Controllers
                 }
 
                 //hämtar spelet ifrån api
-
-                viewModel.CurrentGame = GetSpeficifGameFromAPi(gameId);                
-
                 viewModel.CurrentGame = GetSpeficifGameFromAPi(gameId);
             }
             catch (Exception ex)
@@ -140,7 +137,6 @@ namespace LudoWebApp.Controllers
                 //ModelState = en klass i MVC ramverket. som använder AddModelError metoden.
                 //tar medelande och tar bort "".
                 ModelState.AddModelError("", ex.Message.Replace("\"", ""));
-
             }
 
             //"Index" för att få samma utseende som index metoden
@@ -259,8 +255,4 @@ namespace LudoWebApp.Controllers
 
 
     }
-
-
-
-
 }
