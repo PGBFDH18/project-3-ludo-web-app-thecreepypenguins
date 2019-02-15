@@ -49,6 +49,11 @@ namespace LudoWebApp.Controllers
                 viewModel.AllGames.Add(GetSpeficifGameFromAPi(gameId));
             }
 
+            //för att de ska få en ickeexisterande färg, drop down alltid tom
+            viewModel.ColorPlayer1 = -1;
+            viewModel.ColorPlayer2 = -1;
+            viewModel.ColorPlayer3 = -1;
+            viewModel.ColorPlayer4 = -1;
 
             //en klass som skicka in i view 
             return View(viewModel);
@@ -58,12 +63,28 @@ namespace LudoWebApp.Controllers
         {
             var viewModel = new LudoViewModel();
 
-            var r = new Random();
-            viewModel.Dice = r.Next(6) + 1;
+            //hämtar ett värde ifrån api tärningen
+            var client = new RestClient("http://localhost:52858/api"); //LOCALHOST PÅ VÅRT API NÄR VI STARTAT UPP DET!!!
+            var request = new RestRequest("ludo/{gameId}", Method.PUT);
+            request.AddUrlSegment("gameId", gameId); // replaces matching token in request.Resource
 
-            // Testa att kasta en tärning, tärningen skall egentligen komma från REST API projektet
-            //var r = new Random();
-            //result.dice = r.Next(6) + 1;
+            IRestResponse<PutGame> ludoGameResponse = client.Execute<PutGame>(request);
+
+            //kontrollerar om ett fel skickats från API:et
+            if (ludoGameResponse.StatusCode != System.Net.HttpStatusCode.OK)
+            {
+                //Modelstate är en mvc model
+                //validerings summary visas på skärmen 
+                ModelState.AddModelError("", ludoGameResponse.Content.Replace("\"", ""));
+            }
+            else
+            {
+                viewModel.Dice = ludoGameResponse.Data.diece;
+            }
+
+            var x = GetSpeficifGameFromAPi(gameId);
+
+            viewModel.CurrentGame = x;
 
             //"Index" för att få samma utseende som index metoden
             return View("Index", viewModel);
@@ -78,30 +99,25 @@ namespace LudoWebApp.Controllers
 
             List<Player> players = new List<Player>();
 
-            if (viewModel.ColorPlayer1 != "-1")
+            if (viewModel.ColorPlayer1 != -1)
             {
                 players.Add(new Player() { PlayerColor = viewModel.ColorPlayer1 });
             }
-            if (viewModel.ColorPlayer2 != "-1")
+            if (viewModel.ColorPlayer2 != -1)
             {
                 players.Add(new Player() { PlayerColor = viewModel.ColorPlayer2 });
             }
-            if (viewModel.ColorPlayer3 != "-1")
+            if (viewModel.ColorPlayer3 != -1)
             {
                 players.Add(new Player() { PlayerColor = viewModel.ColorPlayer3 });
             }
-            if (viewModel.ColorPlayer4 != "-1")
+            if (viewModel.ColorPlayer4 != -1)
             {
                 players.Add(new Player() { PlayerColor = viewModel.ColorPlayer4 });
             }
 
-            if (players.Count() < 2)
-            {
-                ModelState.AddModelError("Player1", "Minimum 2 players");
-            }
-
-            // Om inga fel uppstod skapa spelet
-            if (ModelState.IsValid)
+            //här sker det när AddPlayerToGame fångar fel
+            try
             {
                 //skapa spelet i api
                 int gameId = CreateGameUsingApi();
@@ -113,7 +129,18 @@ namespace LudoWebApp.Controllers
                 }
 
                 //hämtar spelet ifrån api
+<<<<<<< HEAD
                 viewModel.CurrentGame = GetSpeficifGameFromAPi(gameId);                
+=======
+                viewModel.CurrentGame = GetSpeficifGameFromAPi(gameId);
+            }
+            catch (Exception ex)
+            {
+                //AddModelError = en metod som lägger till ett specefik fel i fel listan.
+                //ModelState = en klass i MVC ramverket. som använder AddModelError metoden.
+                //tar medelande och tar bort "".
+                ModelState.AddModelError("", ex.Message.Replace("\"", ""));
+>>>>>>> 7e047625fcb8226064dbb8f4b610340fa93854d3
             }
 
             //"Index" för att få samma utseende som index metoden
@@ -209,15 +236,19 @@ namespace LudoWebApp.Controllers
             return playerResponse.Data;
         }
 
-        public Player AddPlayerToGame(int gameId, string playerColor)
+        public Player AddPlayerToGame(int gameId, int playerColor)
         {
             var client = new RestClient("http://localhost:52858/api"); //LOCALHOST PÅ VÅRT API NÄR VI STARTAT UPP DET!!!
             var request = new RestRequest("ludo/{gameId}/players", Method.POST);
             request.AddUrlSegment("gameId", gameId); // replaces matching token in request.Resource
-            request.AddQueryParameter("color", playerColor);
+            request.AddQueryParameter("color", playerColor.ToString());
             request.AddQueryParameter("name", "Player " + playerColor);
 
             IRestResponse<Player> ludoGameResponse = client.Execute<Player>(request);
+
+            //kontrollerar om ett fel skickats från API:et
+            if (ludoGameResponse.StatusCode != System.Net.HttpStatusCode.OK)
+                throw new Exception(ludoGameResponse.Content);
 
             // Om det blir fel svar från API:et så kasta ett fel istället för att gå vidare
             if (ludoGameResponse.ErrorException != null)

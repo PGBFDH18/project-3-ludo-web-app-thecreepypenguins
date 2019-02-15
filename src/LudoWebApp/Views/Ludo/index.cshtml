@@ -152,7 +152,7 @@
     <div class="gameInfo">
 
         @*nedan är en bild, hade den för att testa mig fram bara*
-            @*<img src="~/images/1528080671pikachu-not-happy-pokemon-png.png" width="104" height="142">*@
+        @*<img src="~/images/1528080671pikachu-not-happy-pokemon-png.png" width="104" height="142">*@
         <div class="infoGame">
 
             @*Skriver ut resultatet ut till view*@
@@ -222,7 +222,7 @@
         @*klumpit sätt för att använda HTML button taggen som inte stöds av Razor*@
         @*<button onclick="location".href='@Url.Action("RollDice")';return false;" class="button">Roll Dice</button>
 
-            <button onclick="" class="button">Dice</button>*@
+        <button onclick="" class="button">Dice</button>*@
 
         @*om inget spela har skapats, visa då ett formulär*@
         @if (Model.CurrentGame == null)
@@ -235,7 +235,7 @@
                 @Html.DropDownList("ColorPlayer1", new List<SelectListItem>
                      {
                         new SelectListItem { Text = "", Value = "-1" },
-                        new SelectListItem { Text = "Red", Value = "0" },
+                        new SelectListItem { Text = "Red", Value ="0" },
                         new SelectListItem { Text = "Green", Value = "1" },
                         new SelectListItem { Text = "Blue", Value = "2" },
                         new SelectListItem { Text = "Yellow", Value = "3" },
@@ -275,11 +275,6 @@
                      })
                 <br />
 
-                // allt innanför div taggen kommer få röd text
-                <div class="errorMessage">
-                    @Html.ValidationSummary()
-                </div>
-
                 //Knappen till skapa spel
                 <input type="submit" value="Create Game" />
             }
@@ -287,10 +282,11 @@
         else
         {
             //Om spelet har börjat
-            if (Model.CurrentGame.GameState == LudoWebApp.LudoModels.GameState.Started)
+            if (Model.CurrentGame.GameState != LudoWebApp.LudoModels.GameState.Ended)
             {
 
                 @: Game started with id @Model.CurrentGame.GameId<br />
+<<<<<<< HEAD
 
 
 
@@ -306,14 +302,22 @@
 
 
                 <div class="currentPlayer">Current player @Model.CurrentGame.CurrentPlayer.Name</div>
+=======
+                
+                <div class="currentPlayer">Current player @((LudoWebApp.LudoModels.PlayerColor)Model.CurrentGame.CurrentPlayer.PlayerColor)</div>
+>>>>>>> 7e047625fcb8226064dbb8f4b610340fa93854d3
 
                 //Detta ligger här för att kasta tärningen knappen ska synas när spelet har startat
                 @*Knapp med hjälp av Razors inbyggda html helper*@
-                @Html.ActionLink("Roll dice", "RollDice", null, new { gameId = Model.CurrentGame }, new { @class = "button" })
-
+                @Html.ActionLink("Roll dice", "RollDice", null, new { gameId = Model.CurrentGame.GameId }, new { @class = "button" })
+         
             }
+
         }
 
-
+        @*// allt innanför div taggen kommer få röd text*@
+        <div class="errorMessage">
+            @Html.ValidationSummary()
+        </div>
     </div>
 </div>

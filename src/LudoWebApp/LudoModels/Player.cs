@@ -11,8 +11,8 @@ namespace LudoWebApp.LudoModels
         [Range(1, 4)]
         public int PlayerId { get; set; }
         public string Name { get; set; }
-        [Range(1, 4)]
-        public string PlayerColor { get; set; }
+        [Range(0, 3)]
+        public int PlayerColor { get; set; }
         public List<Piece> Pieces { get; set; }
         public int Offset { get; set; }
     }

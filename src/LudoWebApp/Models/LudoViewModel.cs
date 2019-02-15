@@ -13,10 +13,10 @@ namespace LudoWebApp.Models
         public List<Game> AllGames { get; set; }
 
 
-        public string ColorPlayer1 { get; set; }
-        public string ColorPlayer2 { get; set; }
-        public string ColorPlayer3 { get; set; }
-        public string ColorPlayer4 { get; set; }
+        public int ColorPlayer1 { get; set; }
+        public int ColorPlayer2 { get; set; }
+        public int ColorPlayer3 { get; set; }
+        public int ColorPlayer4 { get; set; }
 
     }
 }
