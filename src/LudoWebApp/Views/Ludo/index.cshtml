@@ -285,31 +285,17 @@
             if (Model.CurrentGame.GameState != LudoWebApp.LudoModels.GameState.Ended)
             {
 
-                @: Game started with id @Model.CurrentGame.GameId<br />
-<<<<<<< HEAD
+                <font size="5">Game started with id @Model.CurrentGame.GameId</font>
 
+                   <div>You Rolled a @Model.Dice and moved *** @Model.CurrentGame.Pieces @Model.Dice step(s)</div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-                <div class="currentPlayer">Current player @Model.CurrentGame.CurrentPlayer.Name</div>
-=======
-                
                 <div class="currentPlayer">Current player @((LudoWebApp.LudoModels.PlayerColor)Model.CurrentGame.CurrentPlayer.PlayerColor)</div>
->>>>>>> 7e047625fcb8226064dbb8f4b610340fa93854d3
+
 
                 //Detta ligger här för att kasta tärningen knappen ska synas när spelet har startat
                 @*Knapp med hjälp av Razors inbyggda html helper*@
                 @Html.ActionLink("Roll dice", "RollDice", null, new { gameId = Model.CurrentGame.GameId }, new { @class = "button" })
+
          
             }
 
