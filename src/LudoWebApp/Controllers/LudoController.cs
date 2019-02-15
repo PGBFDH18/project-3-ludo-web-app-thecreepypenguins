@@ -129,9 +129,6 @@ namespace LudoWebApp.Controllers
                 }
 
                 //hämtar spelet ifrån api
-<<<<<<< HEAD
-                viewModel.CurrentGame = GetSpeficifGameFromAPi(gameId);                
-=======
                 viewModel.CurrentGame = GetSpeficifGameFromAPi(gameId);
             }
             catch (Exception ex)
@@ -140,7 +137,6 @@ namespace LudoWebApp.Controllers
                 //ModelState = en klass i MVC ramverket. som använder AddModelError metoden.
                 //tar medelande och tar bort "".
                 ModelState.AddModelError("", ex.Message.Replace("\"", ""));
->>>>>>> 7e047625fcb8226064dbb8f4b610340fa93854d3
             }
 
             //"Index" för att få samma utseende som index metoden
@@ -257,28 +253,6 @@ namespace LudoWebApp.Controllers
             return ludoGameResponse.Data;
         }
 
-        //public void UpdatePices() //updatera en pjäs
-        //{
-        //    var client = new RestClient("http://someserver.com/api");
 
-        //    var request = new RestRequest("ludo/{gameId}/players/{playerId}", Method.POST);
-
-
-        //    // request.AddJsonBody(); 
-        //}
-
-        public void CreateNewGame()
-        {
-            var client = new RestClient("http://someserver.com/api");
-
-            var request = new RestRequest("ludo/{gameId}/players/{playerId}", Method.POST);
-
-
-            request.AddJsonBody();
-        }
     }
-
-
-
-
 }
