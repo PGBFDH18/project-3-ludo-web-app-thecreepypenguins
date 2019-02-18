@@ -1,7 +1,6 @@
-- https://ludoproject.azurewebsites.net/
-- 
+https://ludoproject.azurewebsites.net/
 
-- Vi har under projektet frågat om hjälp bland klasskompisar, lärare samt tagit information från ex. stackoverflow.
+Vi har under projektet frågat om hjälp bland klasskompisar, lärare samt tagit information från ex. stackoverflow.
 
 - Ludo user stories
 
