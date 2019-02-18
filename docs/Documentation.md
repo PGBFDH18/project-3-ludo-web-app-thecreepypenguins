@@ -67,10 +67,11 @@ You continue until all four pieces reached the goal.
 
 The first player whom reaches with all four pieces wins the game. 
 
+Second place is given to the second one that reaches the goal and so on...
 
 
 
-
+## AzureWebsites:
 
 
 https://ludoproject.azurewebsites.net/
