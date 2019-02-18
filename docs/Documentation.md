@@ -23,7 +23,6 @@ Gherkin: User stories 1-2
 - A player starts a game 
 - Then the player waits for a minimum of one player and maximum of three players to join
 
-
 User stories 3 & 6
   Scenario: 
 - Another player joins a game 
@@ -43,6 +42,8 @@ User stories 4&6
 - The next players turn, clockwise.
 - Repeat until all 4 pieces of each player is in goal.
 - First player with all 4 pieces in goal wins the game, and so on.. 
+
+
 
 How to play:
 
