@@ -1,8 +1,8 @@
-#TheCreepyPenguins WebbApp
+# TheCreepyPenguins WebbApp
 
 Vi har under projektet frågat om hjälp bland klasskompisar, lärare samt tagit information från ex. stackoverflow.
 
-##- Ludo user stories
+## - Ludo user stories
 
 1. Som spelare slår jag med tärningar och får gå antal prickar på den med min pjäs
 
@@ -18,12 +18,12 @@ Vi har under projektet frågat om hjälp bland klasskompisar, lärare samt tagit
 
 
 
-##Gherkin: User stories 1-2
+## Gherkin: User stories 1-2
   Scenario: 
 - A player starts a game 
 - Then the player waits for a minimum of one player and maximum of three players to join
 
-##User stories 3 & 6
+## User stories 3 & 6
   Scenario: 
 - Another player joins a game 
 - Given the player has started a game with roll the dice 
@@ -32,7 +32,7 @@ Vi har under projektet frågat om hjälp bland klasskompisar, lärare samt tagit
 - If the player rolls a six on the dice, an extra chance is given to roll the dice again and to make an extra move accordingly to the new number given on the dice.
  - The next players turn
 
-##User stories 4&6
+## User stories 4&6
   Scenario: 
 - First player has made his/hers turn 
 - Next player roll the dice 
@@ -45,7 +45,7 @@ Vi har under projektet frågat om hjälp bland klasskompisar, lärare samt tagit
 
 
 
-##How to play:
+## How to play:
 
 There has to be at least 2-4 players to begin the Ludo Game.
 
