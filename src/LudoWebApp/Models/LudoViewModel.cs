@@ -18,5 +18,7 @@ namespace LudoWebApp.Models
         public int ColorPlayer3 { get; set; }
         public int ColorPlayer4 { get; set; }
 
+        public Piece pices { get; set; }
+
     }
 }

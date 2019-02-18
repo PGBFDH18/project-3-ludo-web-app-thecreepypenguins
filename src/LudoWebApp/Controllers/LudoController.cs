@@ -35,20 +35,11 @@ namespace LudoWebApp.Controllers
                     Name = "test"
                 }
             };*/
-
-            //TEsta get metoderna med hjälp av postman, man måste först skapa spelet med hjälå av postman. och lägga till spelare
-
-            //var allGames = GetGamesFromAPI(); // ta fram alla spel
-            //var player = GetSpecificPlayer(0, 0); // ta fram en spelare ifrån ett spel
-            //var playersInGame = GetSpecificGamePlayers(0); // ta fram alla spelare i ett spel
-            //var game = GetSpeficifGameFromAPi(0); //hämta ett spel och få alla detaljer om det
-
+         
             //skapar en viewModel
             var viewModel = new LudoViewModel();
-
             //få alla spel som ett objekt och inte int
             IEnumerable<int> allGameIds = GetGamesFromAPI();
-
             //skapa en tom lista för alla spel 
             viewModel.AllGames = new List<Game>();
 
@@ -166,7 +157,7 @@ namespace LudoWebApp.Controllers
 
             return ludoGameResponse.Data;
         }
-
+  
         public Game GetSpeficifGameFromAPi(int gameId)
         {
             var client = new RestClient("http://localhost:52858/api"); //LOCALHOST PÅ VÅRT API NÄR VI STARTAT UPP DET!!!
@@ -261,18 +252,7 @@ namespace LudoWebApp.Controllers
 
             return ludoGameResponse.Data;
         }
-        //public void UpdatePices() //updatera en pjäs
-        //{
-        //    var client = new RestClient("http://someserver.com/api");
-
-        //    var request = new RestRequest("ludo/{gameId}/players/{playerId}", Method.POST);
 
 
-        //    // request.AddJsonBody(); 
-        //}
     }
-
-
-
-
 }
