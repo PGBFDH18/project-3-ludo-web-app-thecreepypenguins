@@ -64,7 +64,7 @@ namespace LudoWebApp.Controllers
             var viewModel = new LudoViewModel();
 
             //hämtar ett värde ifrån api tärningen
-            var client = new RestClient("http://localhost:52858/api"); //LOCALHOST PÅ VÅRT API NÄR VI STARTAT UPP DET!!!
+            var client = new RestClient("https://ludoprojectapi.azurewebsites.net/api"); //LOCALHOST PÅ VÅRT API NÄR VI STARTAT UPP DET!!!
             var request = new RestRequest("ludo/{gameId}", Method.PUT);
             request.AddUrlSegment("gameId", gameId); // replaces matching token in request.Resource
 
@@ -92,7 +92,7 @@ namespace LudoWebApp.Controllers
 
         public IActionResult CreateNewGame(LudoViewModel viewModel)
         {
-            //var client = new RestClient("http://someserver.com/api");
+            //var client = new RestClient("https://ludoprojectapi.azurewebsites.net/api");
 
             //var request = new RestRequest("ludo/", Method.POST);
             //request.AddJsonBody();//lägg till det som är i creategae så man kan skapa spel
@@ -146,7 +146,7 @@ namespace LudoWebApp.Controllers
         //med hjälp av API så skapas spelet
         public int CreateGameUsingApi()
         {
-            var client = new RestClient("http://localhost:52858/api"); //LOCALHOST PÅ VÅRT API NÄR VI STARTAT UPP DET!!!
+            var client = new RestClient("https://ludoprojectapi.azurewebsites.net/api"); //LOCALHOST PÅ VÅRT API NÄR VI STARTAT UPP DET!!!
             var request = new RestRequest("ludo/", Method.POST);
 
             IRestResponse<int> ludoGameResponse = client.Execute<int>(request);
@@ -160,7 +160,7 @@ namespace LudoWebApp.Controllers
   
         public Game GetSpeficifGameFromAPi(int gameId)
         {
-            var client = new RestClient("http://localhost:52858/api"); //LOCALHOST PÅ VÅRT API NÄR VI STARTAT UPP DET!!!
+            var client = new RestClient("https://ludoprojectapi.azurewebsites.net/api"); //LOCALHOST PÅ VÅRT API NÄR VI STARTAT UPP DET!!!
             var request = new RestRequest("ludo/{gameId}", Method.GET);
             request.AddUrlSegment("gameId", gameId); // replaces matching token in request.Resource
 
@@ -175,7 +175,7 @@ namespace LudoWebApp.Controllers
 
         public IEnumerable<int> GetGamesFromAPI()
         {
-            var client = new RestClient("http://localhost:52858/api"); // LOCALHOST PÅ VÅRT API NÄR VI STARTAT UPP DET!!!
+            var client = new RestClient("https://ludoprojectapi.azurewebsites.net/api"); // LOCALHOST PÅ VÅRT API NÄR VI STARTAT UPP DET!!!
             var request = new RestRequest("ludo/", Method.GET);
 
             IRestResponse<List<int>> ludoGameResponse = client.Execute<List<int>>(request);
@@ -203,7 +203,7 @@ namespace LudoWebApp.Controllers
 
         public List<Player> GetSpecificGamePlayers(int gameId)
         {
-            var client = new RestClient("http://localhost:52858/api");
+            var client = new RestClient("https://ludoprojectapi.azurewebsites.net/api");
             var request = new RestRequest("ludo/{gameId}/players", Method.GET);
             request.AddUrlSegment("gameId", gameId); // replaces matching token in request.Resource
 
@@ -218,7 +218,7 @@ namespace LudoWebApp.Controllers
 
         public Player GetSpecificPlayer(int gameId, int playerId)
         {
-            var client = new RestClient("http://localhost:52858/api");
+            var client = new RestClient("https://ludoprojectapi.azurewebsites.net/api");
             var request = new RestRequest("ludo/{gameId}/players/{playerId}", Method.GET);
             request.AddUrlSegment("gameId", gameId); // replaces matching token in request.Resource
             request.AddUrlSegment("playerId", playerId); // replaces matching token in request.Resource
@@ -234,7 +234,7 @@ namespace LudoWebApp.Controllers
 
         public Player AddPlayerToGame(int gameId, int playerColor)
         {
-            var client = new RestClient("http://localhost:52858/api"); //LOCALHOST PÅ VÅRT API NÄR VI STARTAT UPP DET!!!
+            var client = new RestClient("https://ludoprojectapi.azurewebsites.net/api"); //LOCALHOST PÅ VÅRT API NÄR VI STARTAT UPP DET!!!
             var request = new RestRequest("ludo/{gameId}/players", Method.POST);
             request.AddUrlSegment("gameId", gameId); // replaces matching token in request.Resource
             request.AddQueryParameter("color", playerColor.ToString());
