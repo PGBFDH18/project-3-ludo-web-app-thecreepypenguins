@@ -286,15 +286,28 @@
             {
 
                 @: Game started with id @Model.CurrentGame.GameId<br />
-                
+
+
                 <div class="currentPlayer">Current player @((LudoWebApp.LudoModels.PlayerColor)Model.CurrentGame.CurrentPlayer.PlayerColor)</div>
 
                 //Detta ligger här för att kasta tärningen knappen ska synas när spelet har startat
                 @*Knapp med hjälp av Razors inbyggda html helper*@
                 @Html.ActionLink("Roll dice", "RollDice", null, new { gameId = Model.CurrentGame.GameId }, new { @class = "button" })
-         
-            }
 
+                @foreach (var player in Model.CurrentGame.Players)
+                {
+                    <hr />
+                    @:Player @((LudoWebApp.LudoModels.PlayerColor)player.PlayerColor)
+                    <hr />
+
+                    foreach (var piece in player.Pieces)
+                    {
+                        @:Piece @piece.PieceId: @piece.State position: @piece.Position
+                        <br />
+                    }
+                }
+                <br />
+             }
         }
 
         @*// allt innanför div taggen kommer få röd text*@
