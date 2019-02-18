@@ -3,8 +3,7 @@
 
 - Vi har under projektet frågat om hjälp bland klasskompisar, lärare samt tagit information från ex. stackoverflow.
 
-- Ett dokument (använder manual) som beskriver hur man spelar spelet.
-Ludo user stories
+- Ludo user stories
 
 1. Som spelare slår jag med tärningar och får gå antal prickar på den med min pjäs
 
@@ -47,16 +46,27 @@ User stories 4&6
 - First player with all 4 pieces in goal wins the game, and so on.. 
 
 How to play:
+
 There has to be at least 2-4 players to begin the Ludo Game.
+
 Every player has four pieces each on the board.
+
 Every player has their own starting position.
+
 You play by rolling the dice. 
-You move one dice at a the time according to what number you get on the diece. 
+
+You move one dice at a the time according to what number you get on the diece.
+
 If you get a six on the diece, you may throw the dice again, and make another move.
+
 When other number than six is received you pass the turn after making your move to the next player.
+
 We play clockwise.
-You continue until all four pieces reached the goal. 
+
+You continue until all four pieces reached the goal.
+
 The first player whom reaches with all four pieces wins the game. 
+
 Second place is given to the second one that reaches the goal and so on...
 
 
