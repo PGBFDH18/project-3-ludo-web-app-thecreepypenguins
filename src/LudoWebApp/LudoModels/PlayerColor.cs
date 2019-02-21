@@ -7,6 +7,7 @@ namespace LudoWebApp.LudoModels
 {
     public enum PlayerColor
     {
+       
         NoPlayer = 99,
         Red = 0,
         Green = 1,
