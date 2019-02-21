@@ -1,0 +1,17 @@
+C:\Users\iindi\OneDrive\Skrivbord\ludo-web-api-carmex-master\src\LudoWebAPI\bin\Debug\netcoreapp2.2\LudoWebAPI.deps.json
+C:\Users\iindi\OneDrive\Skrivbord\ludo-web-api-carmex-master\src\LudoWebAPI\bin\Debug\netcoreapp2.2\LudoWebAPI.runtimeconfig.json
+C:\Users\iindi\OneDrive\Skrivbord\ludo-web-api-carmex-master\src\LudoWebAPI\bin\Debug\netcoreapp2.2\LudoWebAPI.runtimeconfig.dev.json
+C:\Users\iindi\OneDrive\Skrivbord\ludo-web-api-carmex-master\src\LudoWebAPI\bin\Debug\netcoreapp2.2\LudoWebAPI.dll
+C:\Users\iindi\OneDrive\Skrivbord\ludo-web-api-carmex-master\src\LudoWebAPI\bin\Debug\netcoreapp2.2\LudoWebAPI.pdb
+C:\Users\iindi\OneDrive\Skrivbord\ludo-web-api-carmex-master\src\LudoWebAPI\bin\Debug\netcoreapp2.2\LudoGameEngine.dll
+C:\Users\iindi\OneDrive\Skrivbord\ludo-web-api-carmex-master\src\LudoWebAPI\bin\Debug\netcoreapp2.2\LudoGameEngine.pdb
+C:\Users\iindi\OneDrive\Skrivbord\ludo-web-api-carmex-master\src\LudoWebAPI\obj\Debug\netcoreapp2.2\LudoWebAPI.csprojAssemblyReference.cache
+C:\Users\iindi\OneDrive\Skrivbord\ludo-web-api-carmex-master\src\LudoWebAPI\obj\Debug\netcoreapp2.2\LudoWebAPI.csproj.CoreCompileInputs.cache
+C:\Users\iindi\OneDrive\Skrivbord\ludo-web-api-carmex-master\src\LudoWebAPI\obj\Debug\netcoreapp2.2\LudoWebAPI.RazorAssemblyInfo.cache
+C:\Users\iindi\OneDrive\Skrivbord\ludo-web-api-carmex-master\src\LudoWebAPI\obj\Debug\netcoreapp2.2\LudoWebAPI.RazorAssemblyInfo.cs
+C:\Users\iindi\OneDrive\Skrivbord\ludo-web-api-carmex-master\src\LudoWebAPI\obj\Debug\netcoreapp2.2\LudoWebAPI.AssemblyInfoInputs.cache
+C:\Users\iindi\OneDrive\Skrivbord\ludo-web-api-carmex-master\src\LudoWebAPI\obj\Debug\netcoreapp2.2\LudoWebAPI.AssemblyInfo.cs
+C:\Users\iindi\OneDrive\Skrivbord\ludo-web-api-carmex-master\src\LudoWebAPI\obj\Debug\netcoreapp2.2\LudoWebAPI.RazorTargetAssemblyInfo.cache
+C:\Users\iindi\OneDrive\Skrivbord\ludo-web-api-carmex-master\src\LudoWebAPI\obj\Debug\netcoreapp2.2\LudoWebAPI.csproj.CopyComplete
+C:\Users\iindi\OneDrive\Skrivbord\ludo-web-api-carmex-master\src\LudoWebAPI\obj\Debug\netcoreapp2.2\LudoWebAPI.dll
+C:\Users\iindi\OneDrive\Skrivbord\ludo-web-api-carmex-master\src\LudoWebAPI\obj\Debug\netcoreapp2.2\LudoWebAPI.pdb

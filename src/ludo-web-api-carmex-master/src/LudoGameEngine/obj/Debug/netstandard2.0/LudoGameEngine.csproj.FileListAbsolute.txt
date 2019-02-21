@@ -1,0 +1,9 @@
+C:\Users\iindi\OneDrive\Skrivbord\ludo-web-api-carmex-master\src\LudoGameEngine\bin\Debug\netstandard2.0\LudoGameEngine.deps.json
+C:\Users\iindi\OneDrive\Skrivbord\ludo-web-api-carmex-master\src\LudoGameEngine\bin\Debug\netstandard2.0\LudoGameEngine.dll
+C:\Users\iindi\OneDrive\Skrivbord\ludo-web-api-carmex-master\src\LudoGameEngine\bin\Debug\netstandard2.0\LudoGameEngine.pdb
+C:\Users\iindi\OneDrive\Skrivbord\ludo-web-api-carmex-master\src\LudoGameEngine\obj\Debug\netstandard2.0\LudoGameEngine.csprojAssemblyReference.cache
+C:\Users\iindi\OneDrive\Skrivbord\ludo-web-api-carmex-master\src\LudoGameEngine\obj\Debug\netstandard2.0\LudoGameEngine.csproj.CoreCompileInputs.cache
+C:\Users\iindi\OneDrive\Skrivbord\ludo-web-api-carmex-master\src\LudoGameEngine\obj\Debug\netstandard2.0\LudoGameEngine.AssemblyInfoInputs.cache
+C:\Users\iindi\OneDrive\Skrivbord\ludo-web-api-carmex-master\src\LudoGameEngine\obj\Debug\netstandard2.0\LudoGameEngine.AssemblyInfo.cs
+C:\Users\iindi\OneDrive\Skrivbord\ludo-web-api-carmex-master\src\LudoGameEngine\obj\Debug\netstandard2.0\LudoGameEngine.dll
+C:\Users\iindi\OneDrive\Skrivbord\ludo-web-api-carmex-master\src\LudoGameEngine\obj\Debug\netstandard2.0\LudoGameEngine.pdb
